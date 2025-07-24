@@ -1,0 +1,25 @@
+/* General navbar styling */
+.navbarContainer {
+  background-color: aqua;
+}
+
+/* Smooth transition for showing/hiding navbar */
+.transition-navbar {
+  transition: transform 0.3s ease-in-out;
+  z-index: 1030;
+}
+
+/* Slide navbar out of view when hidden */
+.navbar-hidden {
+  transform: translateY(-100%);
+}
+
+
+.logo-container {
+  background-color: pink;
+}
+
+.nav-links-container {
+  background-color: blue;
+  align-items: flex-start;
+}
