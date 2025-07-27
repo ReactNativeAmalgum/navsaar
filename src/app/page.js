@@ -12,6 +12,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
+      {/* <Home /> */}
       <div className="container mt-5" style={{height:'150%'}} >
         <h1>Welcome to Navsaar</h1>
         <p>This is the homepage.</p>

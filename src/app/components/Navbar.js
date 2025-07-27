@@ -7,7 +7,7 @@ import "../../styles/components/navbar.css";
 export default function Navbar() {
   const [hidden, setHidden] = useState(false);
   const lastScrollY = useRef(0);
-  console.log(" Navbar rendered", lastScrollY);
+  // console.log(" Navbar rendered", lastScrollY);/
 
   useEffect(() => {
     function handleScroll() {
