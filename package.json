@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fontsource/teko": "^5.2.6",
+    "@next/font": "^14.2.15",
     "bootstrap": "^5.3.7",
     "next": "15.3.5",
     "react": "^19.0.0",

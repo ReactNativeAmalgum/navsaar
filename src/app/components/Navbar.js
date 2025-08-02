@@ -33,7 +33,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`navbarContainer navbar navbar-expand-lg fixed-top transition-navbar  ${
+      className={`navbarContainer navbar navbar-expand-lg fixed-top transition-navbar px-5 ${
         hidden ? "navbar-hidden" : ""
       }`}
     >
@@ -54,8 +54,11 @@ export default function Navbar() {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div className="collapse navbar-collapse nav-links-container" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
+        <div
+          className="collapse navbar-collapse nav-links-container"
+          id="navbarNav"
+        >
+          <ul className="navbar-nav d-flex justify-content-center custom-align w-100">
             <li className="nav-item">
               <Link href="/" className="nav-link">
                 Home

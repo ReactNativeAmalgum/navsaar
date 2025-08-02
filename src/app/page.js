@@ -13,13 +13,12 @@ export default function Home() {
     <>
       <Navbar />
       {/* <Home /> */}
-      <div className="container mt-5" style={{height:'150%'}} >
+      {/* <div className="container mt-5" style={{height:'150%'}} >
         <h1>Welcome to Navsaar</h1>
         <p>This is the homepage.</p>
 
-        {/* Filler content to create scroll */}
         <div style={{ height: "150vh" }}></div>
-      </div>
+      </div> */}
     </>
   );
 }
