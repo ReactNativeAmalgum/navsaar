@@ -3,33 +3,51 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import "../../styles/components/navbar.css";
+import { Router } from "next/router";
 
 export default function Navbar() {
   const [hidden, setHidden] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false); // NEW: tracks animation
   const lastScrollY = useRef(0);
-  // console.log(" Navbar rendered", lastScrollY);/
+
+  const toggleSidebar = () => {
+    if (sidebarOpen) {
+      // closing
+      setIsAnimating(true);
+      setSidebarOpen(true);
+      setTimeout(() => {
+        setSidebarOpen(false);
+        setIsAnimating(false);
+      }, 400); // matches CSS transition time
+    } else {
+      // opening
+      setSidebarOpen(true);
+    }
+  };
+
+  const closeSidebar = () => {
+    if (sidebarOpen) {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setSidebarOpen(false);
+        setIsAnimating(false);
+      }, 400);
+    }
+  };
 
   useEffect(() => {
     function handleScroll() {
       const currentScrollY = window.scrollY;
-      console.log(" currentScrollY scrolled", currentScrollY);
-      console.log(" lastScrollY scrolled", lastScrollY.current);
-
-      if (currentScrollY > lastScrollY.current) {
-        // Scrolling down — hide navbar
-        setHidden(true);
-      } else {
-        // Scrolling up — show navbar
-        setHidden(false);
-      }
-
+      setHidden(currentScrollY > lastScrollY.current);
       lastScrollY.current = currentScrollY;
     }
 
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const isVisible = sidebarOpen || isAnimating;
 
   return (
     <nav
@@ -42,40 +60,70 @@ export default function Navbar() {
           Navsaar
         </Link>
 
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
+        {/* Burger Toggle */}
+        <div
+          className={`vlt-menu-burger ${
+            sidebarOpen ? "vlt-menu-burger--hide" : ""
+          }`}
+          onClick={toggleSidebar}
           aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon"></span>
-        </button>
+          <span className="line line-one"></span>
+          <span className="line line-two"></span>
+          <span className="line line-three"></span>
+        </div>
+
+        {/* Sidebar */}
 
         <div
-          className="collapse navbar-collapse nav-links-container"
+          className={`nav-links-container sidebar-modal ${
+            sidebarOpen && !isAnimating ? "open" : "closing"
+          }`}
           id="navbarNav"
         >
+          <div className="sidebar-header">
+            <div
+              className={`vlt-menu-burger ${
+                sidebarOpen ? "vlt-menu-burger--opened" : ""
+              }`}
+              onClick={toggleSidebar}
+              aria-label="Toggle navigation"
+            >
+              <span className="line line-one"></span>
+              <span className="line line-two"></span>
+              <span className="line line-three"></span>
+            </div>
+          </div>
+
           <ul className="navbar-nav d-flex justify-content-center custom-align w-100">
-            <li className="nav-item">
-              <Link href="/" className="nav-link">
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link href="/about" className="nav-link">
-                About
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link href="/contact" className="nav-link">
-                Contact
-              </Link>
-            </li>
+            {["Home", "About", "Services", "Contact"].map((item, index) => (
+              <li
+                key={index}
+                style={{ animationDelay: `${index * 0.15}s ` }} // staggered delay
+                className={`nav-item ${
+                  sidebarOpen ? "nav-item-show" : "nav-item-hide"
+                }`}
+              >
+                {" "}
+                <Link
+                  href={`${item.toLowerCase()  === 'home' ? '#' : `/${item.toLowerCase()}`}`}
+                  className={`nav-link ${Router.pathname === `/${item.toLowerCase()}` ? "active" : ""}`}
+                  onClick={closeSidebar}
+                >
+                  {item}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
+
+        {/* Backdrop */}
+        {isVisible && (
+          <div
+            className={`backdrop ${sidebarOpen ? "show" : ""}`}
+            onClick={closeSidebar}
+          ></div>
+        )}
       </div>
     </nav>
   );

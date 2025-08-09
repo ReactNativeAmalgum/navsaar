@@ -3,6 +3,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from "./components/Navbar";
 import { useEffect } from 'react';
+import ZoomImage from './components/ZoomImage';
 
 export default function Home() {
   useEffect(() => {
@@ -12,6 +13,8 @@ export default function Home() {
   return (
     <>
       <Navbar />
+            <ZoomImage />
+
       {/* <Home /> */}
       {/* <div className="container mt-5" style={{height:'150%'}} >
         <h1>Welcome to Navsaar</h1>
