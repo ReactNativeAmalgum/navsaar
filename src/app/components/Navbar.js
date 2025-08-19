@@ -5,8 +5,7 @@ import Link from "next/link";
 import "../../styles/components/navbar.css";
 import { Router } from "next/router";
 
-export default function Navbar() {
-  const [hidden, setHidden] = useState(false);
+export default function Navbar({hidden, setHidden}) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false); // NEW: tracks animation
   const lastScrollY = useRef(0);

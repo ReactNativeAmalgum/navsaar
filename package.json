@@ -11,6 +11,7 @@
   "dependencies": {
     "@fontsource/teko": "^5.2.6",
     "@next/font": "^14.2.15",
+    "aos": "^2.3.4",
     "bootstrap": "^5.3.7",
     "next": "15.3.5",
     "react": "^19.0.0",
