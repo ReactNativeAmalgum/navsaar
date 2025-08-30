@@ -25,6 +25,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+html, body, #__next {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+
 * {
   box-sizing: border-box;
   padding: 0;
