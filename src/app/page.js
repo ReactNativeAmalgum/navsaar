@@ -40,55 +40,178 @@
 // }
 
 
+
+// "use client";
+// import { useEffect } from "react";
+// import gsap from "gsap";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// gsap.registerPlugin(ScrollTrigger);
+
+// export default function Home() {
+//   useEffect(() => {
+//     gsap.utils.toArray(".section").forEach((section) => {
+//       gsap.fromTo(
+//         section,
+//         { scale: 1, opacity: 1, zIndex: 1 },
+//         {
+//           scale: 1.2,
+//           opacity: 0,
+//           zIndex: 0,
+//           ease: "power2.out",
+//           scrollTrigger: {
+//             trigger: section,
+//             start: "top top",
+//             end: "bottom top",
+//             scrub: true,
+//           },
+//         }
+//       );
+//     });
+//   }, []);
+
+//   return (
+//     <main>
+//       <section className="section section-1">
+//         <div className="content">
+//           <h1>Mountain Escape</h1>
+//           <p>Feel the power of the mountains.</p>
+//         </div>
+//       </section>
+//       <section className="section section-2">
+//         <div className="content">
+//           <h1>Deep Forest</h1>
+//           <p>Discover peace within nature.</p>
+//         </div>
+//       </section>
+//       <section className="section section-3">
+//         <div className="content">
+//           <h1>Ocean Vibes</h1>
+//           <p>Let the waves take you away.</p>
+//         </div>
+//       </section>
+//     </main>
+//   );
+// }
+
+
 "use client";
-
-import { useEffect } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [styles, setStyles] = useState([
+    { opacity: 1, scale: 1 }, // Section 1
+    { opacity: 0.4, scale: 0.9 }, // Section 2
+    { opacity: 0.4, scale: 0.9 }, // Section 3
+  ]);
+
   useEffect(() => {
-    // Section 1 zoom-out effect
-    gsap.to(".section-1", {
-      scale: 0.8, // zooms out to 80%
-      ease: "none",
-      scrollTrigger: {
-        trigger: ".section-1",
-        start: "top top",
-        end: "bottom top",
-        scrub: true,
-        pin: true, // keeps section-1 pinned while animating
-      },
-    });
+    const handleScroll = () => {
+      const sections = document.querySelectorAll(".section");
+      const windowHeight = window.innerHeight;
+
+      const newStyles = [
+        { opacity: 1, scale: 1 },
+        { opacity: 0.4, scale: 0.9 },
+        { opacity: 0.4, scale: 0.9 },
+      ];
+
+      const scrollY = window.scrollY;
+
+      /** --- SECTION 1 ZOOM --- **/
+      const zoomMax = 3; // max zoom
+      const zoomDistance = 600; // scroll distance
+      const zoomProgress = Math.min(scrollY / zoomDistance, 1);
+
+      // 🔥 Use sine easing for smooth in-out zoom
+      const easedZoom = Math.sin(zoomProgress * Math.PI);
+
+      newStyles[0] = {
+        opacity: 1,
+        scale: 1 + easedZoom * (zoomMax - 1), // 1 → 3 → 1 smoothly
+      };
+
+      sections.forEach((sec, i) => {
+        const rect = sec.getBoundingClientRect();
+        const progress = Math.min(
+          Math.max(0, (windowHeight - rect.top) / windowHeight),
+          1
+        );
+
+        // Smooth fade/zoom between Section 1 → 2
+        if (i === 1) {
+          newStyles[0] = {
+            opacity: 1 - progress,
+            scale: newStyles[0].scale, // keep current eased zoom
+          };
+
+          newStyles[1] = {
+            opacity: 0.4 + progress * 0.6,
+            scale: 0.9 + progress * 0.1,
+          };
+        }
+
+        // Smooth fade/zoom between Section 2 → 3
+        if (i === 2) {
+          newStyles[1] = {
+            opacity: 1 - progress,
+            scale: 1 - progress * 0.1,
+          };
+
+          newStyles[2] = {
+            opacity: 0.4 + progress * 0.6,
+            scale: 0.9 + progress * 0.1,
+          };
+        }
+      });
+
+      setStyles(newStyles);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <main>
-      {/* Section 1 */}
-      <section className="section section-1">
-        <div className="content">
-          <h1>Mountains & House</h1>
-          <p>This section zooms out as you scroll down.</p>
-        </div>
+    <div>
+      <section
+        className="section one"
+        style={{
+          opacity: styles[0].opacity,
+          transform: `scale(${styles[0].scale})`,
+          transition: "transform 0.1s linear, opacity 0.2s linear",
+          background:
+            "url('https://picsum.photos/1920/1080?random=1') center/cover no-repeat",
+        }}
+      >
+        Section 1
       </section>
 
-      {/* Section 2 */}
-      <section className="section section-2">
-        <div className="content">
-          <h1>Next Section</h1>
-          <p>This comes up as the first section zooms out.</p>
-        </div>
+      <section
+        className="section two"
+        style={{
+          opacity: styles[1].opacity,
+          transform: `scale(${styles[1].scale})`,
+          transition: "transform 0.1s linear, opacity 0.2s linear",
+          background:
+            "url('https://picsum.photos/1920/1080?random=2') center/cover no-repeat",
+        }}
+      >
+        Section 2
       </section>
 
-      {/* Section 3 */}
-      <section className="section section-3">
-        <div className="content">
-          <h1>Final Section</h1>
-          <p>Keep scrolling for more animations.</p>
-        </div>
+      <section
+        className="section three"
+        style={{
+          opacity: styles[2].opacity,
+          transform: `scale(${styles[2].scale})`,
+          transition: "transform 0.1s linear, opacity 0.2s linear",
+          background:
+            "url('https://picsum.photos/1920/1080?random=3') center/cover no-repeat",
+        }}
+      >
+        Section 3
       </section>
-    </main>
+    </div>
   );
 }
