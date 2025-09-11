@@ -8,7 +8,7 @@ export default function ZoomImage({ hidden, setHidden }) {
   const lastScrollY = useRef(0);
   const sectionRef = useRef(null);
   const [manualScroll, setManualScroll] = useState(false);
-  const [scrollLocked, setScrollLocked] = useState(true); 
+  const [scrollLocked, setScrollLocked] = useState(true);
 
   // Helper to lock/unlock body scroll
   const toggleBodyScroll = (lock) => {
@@ -45,7 +45,10 @@ export default function ZoomImage({ hidden, setHidden }) {
       if (rect.bottom > 0 && rect.top < windowHeight) {
         const progress = Math.min(
           1,
-          Math.max(0, (windowHeight - sectionTop) / (windowHeight + sectionHeight))
+          Math.max(
+            0,
+            (windowHeight - sectionTop) / (windowHeight + sectionHeight)
+          )
         );
 
         // Scale range: zoom out from 2.5 to 1 during progress 0 → 0.5

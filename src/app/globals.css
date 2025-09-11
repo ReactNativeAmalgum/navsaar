@@ -1,4 +1,4 @@
-/* * {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -63,39 +63,5 @@ body {
 .content p {
   font-size: clamp(1rem, 2vw, 1.25rem);
   color: #ddd;
-} */
+} 
 
-
-
-
-.main {
-  height: 100%;
-  overflow-x: hidden;
-}
-
-.section {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 3rem;
-  font-weight: bold;
-  position: sticky;
-  top: 0;
-  transition: transform 0.2s linear;
-  z-index: 1;
-}
-
-.one {
-  background: url("https://picsum.photos/id/1018/1200/800") no-repeat center/cover;
-  z-index: 2;
-}
-
-.two {
-  background: url("https://picsum.photos/id/1025/1200/800") no-repeat center/cover;
-}
-
-.three {
-  background: url("https://picsum.photos/id/1039/1200/800") no-repeat center/cover;
-}

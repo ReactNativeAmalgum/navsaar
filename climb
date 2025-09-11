@@ -1,0 +1,156 @@
+
+"use client";
+import { useEffect, useState } from "react";
+
+export default function Home() {
+  const [styles, setStyles] = useState([
+    { opacity: 1, scale: 1 }, // Section 1
+    { opacity: 0.4, scale: 0.9 }, // Section 2
+    { opacity: 0.4, scale: 0.9 }, // Section 3
+  ]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = document.querySelectorAll(".section");
+      const windowHeight = window.innerHeight;
+
+      const newStyles = [
+        { opacity: 1, scale: 1 },
+        { opacity: 0.4, scale: 0.9 },
+        { opacity: 0.4, scale: 0.9 },
+      ];
+
+      const scrollY = window.scrollY;
+
+      /** --- SECTION 1 ZOOM --- **/
+      const zoomMax = 3; // max zoom
+      const zoomDistance = 600; // scroll distance
+      const zoomProgress = Math.min(scrollY / zoomDistance, 1);
+
+      // 🔥 Use sine easing for smooth in-out zoom
+      const easedZoom = Math.sin(zoomProgress * Math.PI);
+
+      newStyles[0] = {
+        opacity: 1,
+        scale: 1 + easedZoom * (zoomMax - 1), // 1 → 3 → 1 smoothly
+      };
+
+      sections.forEach((sec, i) => {
+        const rect = sec.getBoundingClientRect();
+        const progress = Math.min(
+          Math.max(0, (windowHeight - rect.top) / windowHeight),
+          1
+        );
+
+        // Smooth fade/zoom between Section 1 → 2
+        if (i === 1) {
+          newStyles[0] = {
+            opacity: 1 - progress,
+            scale: newStyles[0].scale, // keep current eased zoom
+          };
+
+          newStyles[1] = {
+            opacity: 0.4 + progress * 0.6,
+            scale: 0.9 + progress * 0.1,
+          };
+        }
+
+        // Smooth fade/zoom between Section 2 → 3
+        if (i === 2) {
+          newStyles[1] = {
+            opacity: 1 - progress,
+            scale: 1 - progress * 0.1,
+          };
+
+          newStyles[2] = {
+            opacity: 0.4 + progress * 0.6,
+            scale: 0.9 + progress * 0.1,
+          };
+        }
+      });
+
+      setStyles(newStyles);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <div>
+      <section
+        className="section one"
+        style={{
+          opacity: styles[0].opacity,
+          transform: `scale(${styles[0].scale})`,
+          transition: "transform 0.1s linear, opacity 0.2s linear",
+          background:
+            "url('https://picsum.photos/1920/1080?random=1') center/cover no-repeat",
+        }}
+      >
+        Section 1
+      </section>
+
+      <section
+        className="section two"
+        style={{
+          opacity: styles[1].opacity,
+          transform: `scale(${styles[1].scale})`,
+          transition: "transform 0.1s linear, opacity 0.2s linear",
+          background:
+            "url('https://picsum.photos/1920/1080?random=2') center/cover no-repeat",
+        }}
+      >
+        Section 2
+      </section>
+
+      <section
+        className="section three"
+        style={{
+          opacity: styles[2].opacity,
+          transform: `scale(${styles[2].scale})`,
+          transition: "transform 0.1s linear, opacity 0.2s linear",
+          background:
+            "url('https://picsum.photos/1920/1080?random=3') center/cover no-repeat",
+        }}
+      >
+        Section 3
+      </section>
+    </div>
+  );
+}
+
+
+
+
+.main {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+.section {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: bold;
+  position: sticky;
+  top: 0;
+  transition: transform 0.2s linear;
+  z-index: 1;
+}
+
+.one {
+  background: url("https://picsum.photos/id/1018/1200/800") no-repeat center/cover;
+  z-index: 2;
+}
+
+.two {
+  background: url("https://picsum.photos/id/1025/1200/800") no-repeat center/cover;
+}
+
+.three {
+  background: url("https://picsum.photos/id/1039/1200/800") no-repeat center/cover;
+}

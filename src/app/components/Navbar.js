@@ -5,7 +5,8 @@ import Link from "next/link";
 import "../../styles/components/navbar.css";
 import { Router } from "next/router";
 
-export default function Navbar({hidden, setHidden}) {
+export default function Navbar() {
+  const [hidden, setHidden] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false); // NEW: tracks animation
   const lastScrollY = useRef(0);
@@ -105,8 +106,14 @@ export default function Navbar({hidden, setHidden}) {
               >
                 {" "}
                 <Link
-                  href={`${item.toLowerCase()  === 'home' ? '#' : `/${item.toLowerCase()}`}`}
-                  className={`nav-link ${Router.pathname === `/${item.toLowerCase()}` ? "active" : ""}`}
+                  href={`${
+                    item.toLowerCase() === "home"
+                      ? "#"
+                      : `/${item.toLowerCase()}`
+                  }`}
+                  className={`nav-link ${
+                    Router.pathname === `/${item.toLowerCase()}` ? "active" : ""
+                  }`}
                   onClick={closeSidebar}
                 >
                   {item}
