@@ -1,7 +1,5 @@
-import React from 'react'
+import "../globals.css";
 
-export default function MainLayout() {
-  return (
-    <div>MainLayout</div>
-  )
+export default function Layout({ children }) {
+  return <>{children}</>;
 }

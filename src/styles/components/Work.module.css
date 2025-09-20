@@ -1,0 +1,65 @@
+.padding30 {
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: transparent;
+}
+
+.innerCardBody {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.card_title {
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: black;
+  font-family: Roboto, Helvetica, sans-serif;
+}
+
+.thumbnailWrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+.thumbnailImage {
+  transition: transform 0.5s ease;
+}
+
+.thumbnailWrapper:hover .thumbnailImage {
+  transform: scale(1.1); /* scales only the image */
+}
+
+.demo__title {
+  font-family: "Teko", Helvetica, sans-serif;
+  font-size: 70px;
+  line-height: 1;
+  letter-spacing: 0.2em;
+  color: #000000;
+}
+.demo__title2 {
+  line-height: 1;
+  letter-spacing: 0.2em;
+  color: #666;
+  font-size: 18px;
+  line-height: 1.222222222222222;
+  line-height: 1.555555555555556;
+  margin-left: 28px;
+}
+.demo__title-description {
+}
+.cardShadow {
+  border: 2px solid rgba(0, 0, 0, 0.3); /* subtle border */
+  transition: border 0.3s ease-in-out;   /* smooth transition */
+}
+
+.cardShadow:hover {
+  border: none; /* disappears on hover */
+}
+
+.bgStyle {
+  background-color: transparent;
+}
