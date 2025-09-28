@@ -1,136 +1,92 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import Link from "next/link";
-import "../../styles/components/navbar.css";
-import { Router } from "next/router";
+import { usePathname } from "next/navigation";
+import styles from "../../styles/components/Navbar.module.css";
 
 export default function Navbar() {
-  const [hidden, setHidden] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(false); // NEW: tracks animation
-  const lastScrollY = useRef(0);
+  const pathname = usePathname();
 
-  const toggleSidebar = () => {
-    if (sidebarOpen) {
-      // closing
-      setIsAnimating(true);
-      setSidebarOpen(true);
-      setTimeout(() => {
-        setSidebarOpen(false);
-        setIsAnimating(false);
-      }, 400); // matches CSS transition time
-    } else {
-      // opening
-      setSidebarOpen(true);
-    }
-  };
+  const toggleSidebar = () => setSidebarOpen((prev) => !prev);
+  const closeSidebar = () => setSidebarOpen(false);
 
-  const closeSidebar = () => {
-    if (sidebarOpen) {
-      setIsAnimating(true);
-      setTimeout(() => {
-        setSidebarOpen(false);
-        setIsAnimating(false);
-      }, 400);
-    }
-  };
-
-  useEffect(() => {
-    function handleScroll() {
-      const currentScrollY = window.scrollY;
-      setHidden(currentScrollY > lastScrollY.current);
-      lastScrollY.current = currentScrollY;
-    }
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const isVisible = sidebarOpen || isAnimating;
+  const navItems = [
+    { label: "Home", href: "/" },
+    { label: "About", href: "/about" },
+    { label: "Services", href: "/services" },
+    { label: "Contact", href: "/contact" },
+  ];
 
   return (
-    <nav
-      className={`navbarContainer navbar navbar-expand-lg fixed-top transition-navbar px-5 ${
-        hidden ? "navbar-hidden" : ""
-      }`}
-    >
-      <div className="container-fluid logo-container">
-        <Link href="/" className="navbar-brand">
-          Navsaar
-        </Link>
+    <>
+      <nav className={`${styles.navbarContainer} fixed-top px-5`}>
+        <div className="container-fluid d-flex justify-content-between align-items-center">
+          <Link href="/" className={styles.navbarBrand}>
+            Navsaar
+          </Link>
 
-        {/* Burger Toggle */}
-        <div
-          className={`vlt-menu-burger ${
-            sidebarOpen ? "vlt-menu-burger--hide" : ""
-          }`}
-          onClick={toggleSidebar}
-          aria-label="Toggle navigation"
-        >
-          <span className="line line-one"></span>
-          <span className="line line-two"></span>
-          <span className="line line-three"></span>
-        </div>
-
-        {/* Sidebar */}
-
-        <div
-          className={`nav-links-container sidebar-modal ${
-            sidebarOpen && !isAnimating ? "open" : "closing"
-          }`}
-          id="navbarNav"
-        >
-          <div className="sidebar-header">
-            <div
-              className={`vlt-menu-burger ${
-                sidebarOpen ? "vlt-menu-burger--opened" : ""
-              }`}
-              onClick={toggleSidebar}
-              aria-label="Toggle navigation"
-            >
-              <span className="line line-one"></span>
-              <span className="line line-two"></span>
-              <span className="line line-three"></span>
-            </div>
+          {/* Burger menu (turns into cross when open) */}
+          <div
+            className={`${styles.burger} ${
+              sidebarOpen ? styles.burgerOpen : ""
+            }`}
+            onClick={toggleSidebar}
+          >
+            <span className={styles.line}></span>
+            <span className={styles.line}></span>
+            <span className={styles.line}></span>
           </div>
 
-          <ul className="navbar-nav d-flex justify-content-center custom-align w-100">
-            {["Home", "About", "Services", "Contact"].map((item, index) => (
-              <li
-                key={index}
-                style={{ animationDelay: `${index * 0.15}s ` }} // staggered delay
-                className={`nav-item ${
-                  sidebarOpen ? "nav-item-show" : "nav-item-hide"
-                }`}
-              >
-                {" "}
-                <Link
-                  href={`${
-                    item.toLowerCase() === "home"
-                      ? "#"
-                      : `/${item.toLowerCase()}`
-                  }`}
-                  className={`nav-link ${
-                    Router.pathname === `/${item.toLowerCase()}` ? "active" : ""
-                  }`}
-                  onClick={closeSidebar}
-                >
-                  {item}
-                </Link>
-              </li>
-            ))}
+          {/* Desktop navigation */}
+          <ul className={styles.desktopNavLinks}>
+            {navItems.map(({ label, href }) => {
+              const isActive = pathname === href;
+              return (
+                <li key={href} className={styles.navItem}>
+                  <Link
+                    href={href}
+                    className={`${styles.navLink} ${
+                      isActive ? styles.activeLink : ""
+                    }`}
+                  >
+                    {label}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
+      </nav>
 
-        {/* Backdrop */}
-        {isVisible && (
-          <div
-            className={`backdrop ${sidebarOpen ? "show" : ""}`}
-            onClick={closeSidebar}
-          ></div>
-        )}
+      {/* Sidebar */}
+      <div
+        className={`${styles.sidebarModal} ${
+          sidebarOpen ? styles.open : styles.closed
+        }`}
+      >
+        <ul className={styles.sidebarNavLinks}>
+          {navItems.map(({ label, href }) => (
+            <li key={href} className={styles.navItem}>
+              <Link
+                href={href}
+                className={`${styles.navLink} ${
+                  pathname === href ? styles.activeLink : ""
+                }`}
+                onClick={closeSidebar}
+              >
+                {label}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
-    </nav>
+
+      {/* Backdrop */}
+      {sidebarOpen && (
+        <div className={styles.backdrop} onClick={closeSidebar}></div>
+      )}
+    </>
   );
 }
