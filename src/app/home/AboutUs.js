@@ -1,10 +1,10 @@
 // components/AboutUs.js
-
+"use client";
 import styles from "../../styles/components/about.module.css";
 
 export default function AboutUs() {
   return (
-    <section className={styles.aboutSection}>
+    <section className={` section_padding ${styles.aboutSection}`}>
       <div className={`container ${styles.container}`}>
         {/* Left side: Experience Box */}
         <div className="col-lg-6 col-md-12 align-items-center d-flex justify-content-center">
@@ -31,7 +31,7 @@ export default function AboutUs() {
         <div className="col-lg-6 col-md-12 ">
           <div className={styles.textContent}>
             {/* <div className=""> */}
-              <h2 className={styles.label}>NAVSAAR STUDIO</h2>
+              <h2 className={"label"}>NAVSAAR STUDIO</h2>
             {/* </div> */}
             <h2 className={styles.heading}>Be The Architect and The Mason</h2>
             <p className={styles.description}>

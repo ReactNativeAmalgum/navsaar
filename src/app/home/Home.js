@@ -3,6 +3,11 @@ import ZoomImage from "./ZoomImage";
 import OurServices from "./OurServices";
 import Work from "./Work";
 import AboutUs from "./AboutUs";
+import OurServices2 from "./OurServices2";
+import Gallery from "./Gallery";
+import OurServices3 from "./OurService3";
+import Testimonial from "./Testimonial";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Home() {
   const [hidden, setHidden] = useState(false);
@@ -10,8 +15,13 @@ export default function Home() {
     <>
       <ZoomImage hidden={hidden} setHidden={setHidden} />
       <AboutUs />
-      <OurServices />
-      <Work />
+      <OurServices2 />
+      {/* <OurServices /> */}
+      {/* <OurServices3 /> */}
+      <Gallery />
+      {/* <Work /> */}
+      <OurServices2 />
+      <Testimonial />
     </>
   );
 }

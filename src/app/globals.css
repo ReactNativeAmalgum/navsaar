@@ -24,3 +24,23 @@ body {
 }
 
 
+.heading2 {
+  font-family: var(--font-teko), Helvetica, sans-serif;
+  font-size: 70px;
+  line-height: 1;
+  color: #000;
+}
+
+
+.label {
+  display: inline-block;
+  padding: 5px 6px 4px;
+  margin: 0;
+  font-family: var(--pf);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.125;
+  color: #ffffff;
+  text-transform: uppercase;
+  background-color: #f24a00;
+}

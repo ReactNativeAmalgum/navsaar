@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 // In layout.js (or _app.js)
 import "bootstrap/dist/css/bootstrap.min.css";
+import Head from "next/head";
 
 const teko = Teko({
   variable: "--font-teko",
@@ -35,6 +36,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        {/* ✅ Add Linearicons */}
+        <link
+          rel="stylesheet"
+          href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css"
+        />
+      </head>
+
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${teko.variable} ${roboto.variable}`}
         style={{ overflowX: "hidden", backgroundColor: "#fff", color: "#000" }}

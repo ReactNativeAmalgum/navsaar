@@ -1,0 +1,17 @@
+.mySwiper {
+  height: 410px;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.counterSection {
+  display: flex;
+  margin-top: 90px;
+  margin-bottom: 90px;
+}
+
+.counterSection .borderLine {
+  height: 1px;
+  width: 100%;
+  background-color: #e0e0e0; /* changed from pink to subtle gray */
+}

@@ -20,7 +20,7 @@ const projects = [
     id: 3,
     title: "Amazon",
     thumbnailUrl:
-      "https://images.unsplash.com/photo-1595526114031-8d8b1023f2b5",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF8-nTqmNp1u68ZQlqdZHg5mUo2KU52GQDLg&s",
   },
   {
     id: 4,
@@ -43,12 +43,10 @@ const projects = [
 
 export default function OurServices() {
   return (
-    <section
-      className={`${styles.sectionBackground} ${styles.sectionWrapper}`}
-    >
+    <section className={`${styles.sectionBackground} ${styles.sectionWrapper}`}>
       <div className={styles.innerWrapper}>
         <div className={styles.header}>
-          <div className={styles.demo__title}>12 demos</div>
+          <div className={'heading2'}>12 demos</div>
           <div className={styles.demo__title2}>
             light & dark
             <br />
