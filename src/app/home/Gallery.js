@@ -8,53 +8,50 @@ const CompareSlider = dynamic(() => import("react-compare-image"), {
 });
 
 const galleryItems = {
-  "Living Room": [
+  "Residential Architecture": [
+    {
+      beforeSrc:
+        "https://5.imimg.com/data5/SELLER/Default/2023/3/295059929/QK/YL/AI/14768853/residential-house-architecture-service.jpg",
+      afterSrc:
+        "https://www.arch2o.com/wp-content/uploads/2019/03/Arch2O-Modern-Residential-House-Design-3.jpg",
+      title: "Modern Residence",
+    },
+  ],
+  "Commercial Architecture": [
+    {
+      beforeSrc:
+        "https://cdn.decoist.com/wp-content/uploads/2017/06/Commercial-building-facade-design.jpg",
+      afterSrc:
+        "https://assets.architecturaldigest.in/photos/600834e423c2521e15e6b856/master/pass/Architecture-modern-office-building-design-1366x768.jpg",
+      title: "Corporate Office",
+    },
+  ],
+  "Living Room Interiors": [
     {
       beforeSrc:
         "https://media.designcafe.com/wp-content/uploads/2022/07/29185240/industrial-rustic-living-room-in-earthy-tones.jpg",
       afterSrc:
         "https://chiedesign.in/wp-content/uploads/2022/05/Luxury-Interior-Design-Living-Room-1080x675.jpg",
-      title: "Laura's Living Room",
-    },
-    {
-      beforeSrc:
-        "https://media.designcafe.com/wp-content/uploads/2023/01/31151510/contemporary-interior-design-ideas-for-your-home.jpg",
-      afterSrc:
-        "https://media.designcafe.com/wp-content/uploads/2023/07/05195443/modern-interior-design.jpg",
-      title: "Heather's Living Room",
+      title: "Luxury Living Room",
     },
   ],
-  Bedroom: [
+  "Bedroom Interiors": [
     {
       beforeSrc:
         "https://static.asianpaints.com/content/dam/asianpaintsbeautifulhomes/gallery/living-room/classic-contemporary-living-room-with-marble-wall-paneling-and-maroon-accent-chairs/contemporary-living-room-with-beige-sofa.jpg.transform/bh-gallery-listing/image.webp",
       afterSrc:
         "https://images.pexels.com/photos/3797991/pexels-photo-3797991.jpeg?cs=srgb&dl=pexels-houzlook-3797991.jpg&fm=jpg",
-      title: "Virginia's Bedroom",
-    },
-  ],
-  "Dining Room": [
-    {
-      beforeSrc:
-        "https://media.designcafe.com/wp-content/uploads/2023/01/31151510/contemporary-interior-design-ideas-for-your-home.jpg",
-      afterSrc:
-        "https://media.designcafe.com/wp-content/uploads/2023/07/05195443/modern-interior-design.jpg",
-      title: "Heather's Dining Room",
-    },
-  ],
-  Kitchen: [
-    {
-      beforeSrc:
-        "https://media.designcafe.com/wp-content/uploads/2023/01/31151510/contemporary-interior-design-ideas-for-your-home.jpg",
-      afterSrc:
-        "https://media.designcafe.com/wp-content/uploads/2023/07/05195443/modern-interior-design.jpg",
-      title: "Heather's Kitchen",
+      title: "Contemporary Bedroom",
     },
   ],
 };
 
-const buttons = ["Living Room", "Bedroom", "Dining Room", "Kitchen"];
-
+const buttons = [
+  "Residential Architecture",
+  "Commercial Architecture",
+  "Living Room Interiors",
+  "Bedroom Interiors",
+];
 // Custom component to prevent jump on click but allow dragging
 function NoClickJumpCompare({ leftImage, rightImage, alt }) {
   const startX = useRef(null);
@@ -117,16 +114,16 @@ function NoClickJumpCompare({ leftImage, rightImage, alt }) {
 }
 
 export default function Gallery() {
-  const [activeBtn, setActiveBtn] = React.useState("Living Room");
+  const [activeBtn, setActiveBtn] = React.useState("Residential Architecture");
   const [links, setLinks] = React.useState([]);
   const [carouselItems, setCarouselItems] = React.useState(
-    galleryItems["Living Room"]
+    galleryItems["Residential Architecture"]
   );
   const [activeSubLink, setActiveSubLink] = React.useState("");
   const [activeIndex, setActiveIndex] = React.useState(0);
 
   React.useEffect(() => {
-    handleMainCategoryClick("Living Room"); // default
+    handleMainCategoryClick("Residential Architecture");
   }, []);
 
   const handleMainCategoryClick = (category) => {

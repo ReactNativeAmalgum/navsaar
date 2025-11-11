@@ -25,7 +25,8 @@
   list-style: none;
 }
 
-.navItem {}
+.navItem {
+}
 
 .navLink {
   font-family: "Roboto", sans-serif;
@@ -150,4 +151,85 @@
   .desktopNavLinks {
     display: none;
   }
+}
+
+/* ========================= */
+/* 🔽 Dropdown Additions 🔽 */
+/* ========================= */
+
+.dropdown {
+  position: relative;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease-in-out;
+  z-index: 2000;
+  min-width: 180px;
+}
+
+.dropdown:hover .dropdownMenu {
+  opacity: 1;
+  visibility: visible;
+}
+
+.dropdownItem {
+  display: block;
+  padding: 8px 16px;
+  color: #000;
+  text-decoration: none;
+  white-space: nowrap;
+  font-family: "Roboto", sans-serif;
+}
+
+.dropdownItem:hover {
+  background: #f3f3f3;
+  color: #f24a00;
+}
+
+/* Sidebar submenu (for mobile) */
+.sidebarSubMenu {
+  padding-left: 20px;
+  margin-top: 6px;
+}
+
+.sidebarSubItem {
+  display: block;
+  padding: 5px 0;
+  color: #555;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.sidebarSubItem:hover {
+  text-decoration: underline;
+  color: #000;
+}
+
+/* ====== Dropdown Hover Color ====== */
+/* === Dropdown Item Hover (Orange) === */
+.dropdown-item {
+  transition: color 0.3s ease;
+}
+
+.dropdown-item:hover,
+.dropdownItem:hover {
+  color: #ff6600 !important; /* Orange color */
+  background-color: transparent !important;
+}
+
+/* Orange hover for dropdown items */
+.service-dropdown-item:hover {
+  color: orange !important;
+  background-color: transparent !important;
 }

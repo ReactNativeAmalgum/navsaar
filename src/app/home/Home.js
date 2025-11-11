@@ -8,6 +8,7 @@ import Gallery from "./Gallery";
 import OurServices3 from "./OurService3";
 import Testimonial from "./Testimonial";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Page from "../about/page";
 
 export default function Home() {
   const [hidden, setHidden] = useState(false);
@@ -20,7 +21,7 @@ export default function Home() {
       {/* <OurServices3 /> */}
       <Gallery />
       {/* <Work /> */}
-      <OurServices2 />
+      {/* <OurServices2 /> */}
       <Testimonial />
     </>
   );

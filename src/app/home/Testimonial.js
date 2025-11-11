@@ -2,6 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 import styles from "../../styles/components/Testimonial.module.css";
 
 const testimonials = [
@@ -40,6 +46,8 @@ const testimonials = [
 export default function TestimonialCarousel() {
   const sectionRef = useRef(null);
   const [hasMounted, setHasMounted] = useState(false);
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
 
   useEffect(() => {
     setHasMounted(true);
@@ -62,25 +70,19 @@ export default function TestimonialCarousel() {
 
   if (!hasMounted) return null;
 
-  // Group testimonials in chunks of 2
-  const groupedTestimonials = [];
-  for (let i = 0; i < testimonials.length; i += 3) {
-    groupedTestimonials.push(testimonials.slice(i, i + 2));
-  }
-
   return (
     <section
       ref={sectionRef}
-      className={`text-white position-relative section_padding
-        ${styles.testimonialSection}
-        `}
+      className={`text-white position-relative section_padding ${styles.testimonialSection}`}
     >
       <div className="container position-relative">
-        {/* Title and Custom Buttons */}
+        {/* Title */}
         <div className="d-flex justify-content-between align-items-center mb-4">
           <h2 className="text-white">Loved from clients</h2>
+          {/* Custom Prev / Next Buttons */}
           <div>
             <button
+              ref={prevRef}
               className="btn btn-outline-dark me-2"
               type="button"
               data-bs-target="#testimonialCarousel"
@@ -89,6 +91,7 @@ export default function TestimonialCarousel() {
               ← Prev
             </button>
             <button
+              ref={nextRef}
               className="btn btn-outline-dark"
               type="button"
               data-bs-target="#testimonialCarousel"
@@ -99,74 +102,66 @@ export default function TestimonialCarousel() {
           </div>
         </div>
 
-        {/* Bootstrap Carousel */}
-        <div
-          id="testimonialCarousel"
-          className="carousel slide"
-          data-bs-ride="false"
-        >
-          <div className="carousel-inner">
-            {groupedTestimonials.map((group, idx) => (
-              <div
-                className={`carousel-item ${idx === 0 ? "active" : ""}`}
-                key={idx}
-              >
-                <div className="row justify-content-center">
-                  {group.map((test, subIdx) => (
-                    <div
-                      className={`col-md-6 mb-3 ${styles.testimonialItem}`}
-                      key={subIdx}
-                    >
-                      <div
-                        style={{ height: 250 }}
-                        className={`p-4 bg-white text-dark rounded shadow text-start ${styles.testimonialCard}`}
-                      >
-                        <p className="mb-3">{test.quote}</p>
-                        <div className="d-flex align-items-center">
-                          <Image
-                            src={test.image}
-                            alt={test.name}
-                            width={60}
-                            height={60}
-                            className="rounded-circle"
-                          />
-                          <div className="ms-3">
-                            <h6 className="mb-0 fw-bold">{test.name}</h6>
-                            <small className="text-muted">{test.title}</small>
-                          </div>
-
-                          <div
-                            className="ms-auto"
-                            style={{ width: 40, height: 40, color: "#dc3545" }}
-                          >
-                            <svg
-                              width="40px"
-                              height="40px"
-                              viewBox="0 0 171 173"
-                              version="1.1"
-                              xmlns="http://www.w3.org/2000/svg"
-                              xmlnsXlink="http://www.w3.org/1999/xlink"
-                              fill="currentColor"
-                              stroke="none"
-                              strokeWidth="1"
-                              fillRule="nonzero"
-                            >
-                              <title>quote</title>
-                              <desc>Created with Sketch.</desc>
-                              <g>
-                                <polygon points="0 103.800162 36.5 103.800162 12.1664766 173 48.6664766 173 73 103.800162 73 0 0 0"></polygon>
-                                <polygon points="98 0 98 103.800162 134.5 103.800162 110.166477 173 146.666477 173 171 103.800162 171 0"></polygon>
-                              </g>
-                            </svg>
-                          </div>
-                        </div>
-                      </div>
+        <div className="position-relative">
+          {/* Swiper Carousel */}
+          <Swiper
+            modules={[Navigation, Pagination]}
+            spaceBetween={30}
+            slidesPerView={1}
+            pagination={{ clickable: true }}
+            loop={true}
+            breakpoints={{
+              768: { slidesPerView: 2 },
+              1200: { slidesPerView: 3 },
+            }}
+            onInit={(swiper) => {
+              swiper.params.navigation.prevEl = prevRef.current;
+              swiper.params.navigation.nextEl = nextRef.current;
+              swiper.navigation.init();
+              swiper.navigation.update();
+            }}
+            className="pb-5"
+          >
+            {testimonials.map((test, idx) => (
+              <SwiperSlide key={idx}>
+                <div
+                  style={{ height: 250 }}
+                  className={`p-4 bg-white text-dark rounded shadow text-start ${styles.testimonialCard}`}
+                >
+                  <p className="mb-3">{test.quote}</p>
+                  <div className="d-flex align-items-center">
+                    <Image
+                      src={test.image}
+                      alt={test.name}
+                      width={60}
+                      height={60}
+                      className="rounded-circle"
+                    />
+                    <div className="ms-3">
+                      <h6 className="mb-0 fw-bold">{test.name}</h6>
+                      <small className="text-muted">{test.title}</small>
                     </div>
-                  ))}
+
+                    <div
+                      className="ms-auto"
+                      style={{ width: 40, height: 40, color: "#dc3545" }}
+                    >
+                      <svg
+                        width="40px"
+                        height="40px"
+                        viewBox="0 0 171 173"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor"
+                      >
+                        <polygon points="0 103.800162 36.5 103.800162 12.1664766 173 48.6664766 173 73 103.800162 73 0 0 0"></polygon>
+                        <polygon points="98 0 98 103.800162 134.5 103.800162 110.166477 173 146.666477 173 171 103.800162 171 0"></polygon>
+                      </svg>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </SwiperSlide>
             ))}
-          </div>
+          </Swiper>
         </div>
       </div>
     </section>

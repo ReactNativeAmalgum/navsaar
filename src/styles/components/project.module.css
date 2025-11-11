@@ -1,0 +1,240 @@
+/* ---------- Banner Section ---------- */
+.banner {
+  position: relative;
+  height: 65vh;
+  background: url("/project_banner.jpg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 100px; /* pushes content below navbar */
+}
+
+.overlay {
+  color: white;
+  max-width: 800px;
+  padding: 20px;
+  text-align: left;
+}
+
+.hello {
+  font-size: 24px;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.056px;
+}
+
+.title {
+  font-size: 160px;
+  font-weight: normal;
+  margin-bottom: 1rem;
+  font-family: "Teko";
+}
+
+.description {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+/* ---------- Content Section ---------- */
+.contentSection {
+  background: #f5f8fa;
+  padding: 100px 0;
+}
+
+.leftSection h4 {
+  font-weight: 700;
+  color: #111;
+  font-size: 34px;
+  line-height: 1.4;
+  font-family: "Teko", sans-serif;
+  letter-spacing: 1px;
+}
+
+.rightSection p {
+  color: #000;
+  font-family: "Cairo", sans-serif;
+  font-size: 16px;
+  line-height: 28px;
+  text-align: justify;
+  margin-bottom: 30px;
+}
+
+.readMore {
+  border: 1px solid #000;
+  background: transparent;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.readMore:hover {
+  background: #000;
+  color: #fff;
+}
+
+/* ---------- Header Section ---------- */
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.right-cont {
+  position: relative;
+}
+
+/* ---------- Dropdown Styles ---------- */
+.dropdownContainer {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  /* max-width: 320px; */
+}
+
+.dropdownToggle {
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 3px 14px;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  z-index: 10;
+}
+
+.dropdownMenu li {
+  border-bottom: 1px solid #eee;
+}
+
+.dropdownMenu li:last-child {
+  border-bottom: none;
+}
+
+.dropdownItem {
+  width: 100%;
+  padding: 10px 14px;
+  border: none;
+  background: none;
+  text-align: left;
+  font-size: 1rem;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.dropdownItem:hover {
+  background: #f7f7f7;
+}
+
+.dropdownItem.active {
+  background: #f24a00;
+  color: white;
+}
+  .rightCont {
+    /* flex: 1; */
+              /* padding-right: 25px; */
+
+  }
+/* ---------- Responsive ---------- */
+@media (max-width: 1200px) {
+  .title {
+    font-size: 100px;
+  }
+  .hello {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .headerContainer {
+    flex-direction: row; /* 👈 moves dropdown to the right side */
+    justify-content: space-between;
+  }
+  .rightCont {
+    display: flex;
+    /* flex: 1; */
+    justify-content: flex-end;
+  }
+  .dropdownContainer {
+    /* margin-left: auto; keep it pinned right */
+    display: flex;
+    flex: 1;
+  }
+
+  .leftSection h4,
+  .rightSection p {
+    text-align: center;
+  }
+
+  .contentSection {
+    padding: 60px 0;
+  }
+.dropdownToggle{
+  width: 200px;
+}
+
+}
+
+@media (max-width: 768px) {
+  .banner {
+    height: 50vh;
+  }
+  .title {
+    font-size: 80px;
+  }
+  .overlay {
+    text-align: center;
+    max-width: 90%;
+  }
+  .hello {
+    font-size: 18px;
+  }
+  .description {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 52px;
+  }
+  .hello {
+    font-size: 16px;
+  }
+  .description {
+    font-size: 0.85rem;
+  }
+  .readMore {
+    font-size: 12px;
+    padding: 8px 16px;
+  }
+  .dropdownToggle{
+  width: 150px;
+}
+}
