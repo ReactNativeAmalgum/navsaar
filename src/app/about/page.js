@@ -78,12 +78,14 @@ export default function Page() {
     <>
       <section className={styles.banner}>
         <div className={styles.overlay}>
-          <p className={styles.hello}>Say Hello!</p>
-          <h1 className={styles.title}>Professional & Friendly</h1>
-          <p className={styles.description}>
-            Always happy, enthusiastic and creative, is something to talk about
-            Arquito’s Team.
-          </p>
+          <div className={styles.content} style={{ filter: `blur(${blur}px)` }}>
+            <p className={styles.hello}>Say Hello!</p>
+            <h1 className={styles.title}>Professional & Friendly</h1>
+            <p className={styles.description}>
+              Always happy, enthusiastic and creative, is something to talk
+              about Arquito’s Team.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -187,7 +189,10 @@ export default function Page() {
         <div className="row align-items-center">
           {/* Left Side: Custom Accordion */}
           <div className="col-md-6">
-            <Accordion activeKey={activeKey} onSelect={(key) => setActiveKey(key)}>
+            <Accordion
+              activeKey={activeKey}
+              onSelect={(key) => setActiveKey(key)}
+            >
               {steps.map((step, idx) => {
                 const keyStr = idx.toString();
                 const isActive = activeKey === keyStr;
@@ -212,7 +217,7 @@ export default function Page() {
           </div>
 
           {/* Right Side: Video */}
-          <div  className="col-md-6 ">
+          <div className="col-md-6 ">
             <div className={styles.videoWrapper}>
               <div className="video-image">
                 <Image
@@ -228,7 +233,7 @@ export default function Page() {
         </div>
       </section>
 
-<style jsx global>{`
+      <style jsx global>{`
   /* ===== General Typography ===== */
   .history-wrapper {
     width: 320px;
@@ -341,7 +346,6 @@ export default function Page() {
     filter: invert(1);
   }
 `}</style>
-
     </>
   );
 }

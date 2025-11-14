@@ -243,12 +243,14 @@ export default function Page() {
                   </p>
                 )}
 
-                <button
-                  className={styles.readMore}
-                  onClick={() => setShowMore(!showMore)}
-                >
-                  {showMore ? "READ LESS -" : "READ MORE +"}
-                </button>
+                <div className={styles.readMoreContainer}>
+                  <button
+                    className={styles.readMore}
+                    onClick={() => setShowMore(!showMore)}
+                  >
+                    {showMore ? "READ LESS -" : "READ MORE +"}
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -270,7 +272,13 @@ export default function Page() {
                   >
                     {activeBtn}{" "}
                     <span className={styles.arrow}>
-                      {showDropdown ? "▲" : "▼"}
+                      {/* <i className={`${card.iconClass}`} style={{ fontSize: "42px", color:'#f24a00' }}></i> */}
+
+                      {showDropdown ? (
+                        <i className="caret up"></i>
+                      ) : (
+                        <i className="caret down"></i>
+                      )}
                     </span>
                   </button>
 
@@ -394,13 +402,35 @@ export default function Page() {
           font-weight: 500;
         }
         .custom-btn.active {
-          color: #f24a00;
+          color: #000000ff;
           text-decoration: none;
         }
         .subHeader {
           display: flex;
           justify-content: center;
           padding-top: 30px;
+        }
+        .caret {
+          display: inline-block;
+          width: 8px;
+          height: 8px;
+          margin-left: 8px;
+          border-right: 2px solid #f24a00;
+          border-bottom: 2px solid #f24a00;
+          transform: rotate(45deg);
+          transition: transform 0.3s ease;
+          vertical-align: middle;
+          color: black;
+        }
+
+        /* v caret (downward) */
+        .caret.down {
+          transform: rotate(45deg);
+        }
+
+        /* ^ caret (upward) */
+        .caret.up {
+          transform: rotate(-135deg);
         }
       `}</style>
     </>
