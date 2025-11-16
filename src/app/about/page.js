@@ -78,7 +78,7 @@ export default function Page() {
     <>
       <section className={styles.banner}>
         <div className={styles.overlay}>
-          <div className={styles.content} style={{ filter: `blur(${blur}px)` }}>
+          <div className={styles.content}>
             <p className={styles.hello}>Say Hello!</p>
             <h1 className={styles.title}>Professional & Friendly</h1>
             <p className={styles.description}>
@@ -108,7 +108,7 @@ export default function Page() {
           </div>
 
           {/* Right Section */}
-          <div className="col-md-6 mt-5 mt-md-0">
+          <div className={`col-md-6 mt-5 mt-md-0 ${styles.rightSection }`}>
             <h5 className="mb-4 achivements ">Our Achievements</h5>
 
             <div className="mb-4">

@@ -158,7 +158,7 @@ export default function Page() {
                         <Image
                           src={slide.leftBox.image}
                           alt={slide.leftBox.title}
-                          layout="fill"
+                          // // layout="fill"
                           objectFit="cover"
                           className="custom-box-img"
                         />
@@ -178,7 +178,7 @@ export default function Page() {
                               <Image
                                 src={box.image}
                                 alt={box.title}
-                                layout="fill"
+                                // layout="fill"
                                 objectFit="cover"
                                 className="custom-box-img"
                               />
