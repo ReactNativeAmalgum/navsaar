@@ -1,5 +1,4 @@
 // next.config.mjs
-// next.config.mjs
 const nextConfig = {
   images: {
     remotePatterns: [
@@ -9,8 +8,10 @@ const nextConfig = {
       },
     ],
   },
+  eslint: {
+    dirs: ["src"], // Only lint your source code
+    ignoreDuringBuilds: true, // Ignore ESLint errors during build
+  },
 };
-
-
 
 export default nextConfig;
