@@ -3,7 +3,7 @@
 
 import { FaFacebookF, FaGooglePlusG, FaLinkedinIn } from "react-icons/fa";
 import { SiBehance } from "react-icons/si";
-import styles from "../../styles/components/footer.module.css";
+import styles from "@/styles/components/footer.module.css";
 
 export default function Footer() {
   return (

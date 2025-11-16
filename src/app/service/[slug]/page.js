@@ -3,7 +3,7 @@
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import React, { useEffect, useState, useRef } from "react";
-import styles from "../../../styles/components/service.module.css";
+import styles from "@/styles/components/service.module.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";

@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import styles from "../../styles/components/OurServices3.module.css";
+import styles from "@/styles/components/OurServices3.module.css";
 
 // Import Swiper styles
 import "swiper/css";

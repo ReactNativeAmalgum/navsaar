@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import styles from "../../styles/components/ZoomImage.module.css";
+import styles from "@/styles/components/ZoomImage.module.css";
 
 export default function ZoomImage({ hidden, setHidden }) {
   const [animate, setAnimate] = useState(false);

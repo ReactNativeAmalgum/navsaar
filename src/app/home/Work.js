@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import styles from "../../styles/components/Work.module.css";
+import styles from "@/styles/components/Work.module.css";
 
 const projects = [
   {
