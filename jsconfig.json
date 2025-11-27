@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",       // Base for absolute imports
+    "baseUrl": "src",
     "paths": {
-      "@/*": ["src/*"]   // Alias: import something from "@/app/..." maps to "src/app/..."
+      "@/*": ["*"]
     }
   }
 }
