@@ -1,6 +1,6 @@
 // components/AboutUs.js
 "use client";
-import styles from "@/styles/components/about.module.css";
+import styles from "@/styles/components/About.module.css";
 
 export default function AboutUs() {
   return (

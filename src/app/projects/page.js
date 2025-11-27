@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "@/styles/components/project.module.css";
+import styles from "@/styles/components/Project.module.css";
 import React, { useRef } from "react";
 import dynamic from "next/dynamic";
 import { Carousel, Button } from "react-bootstrap";

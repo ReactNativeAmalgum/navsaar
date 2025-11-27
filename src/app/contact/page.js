@@ -1,7 +1,7 @@
 // components/contact.js
 "use client";
 
-import styles from "@/styles/components/contact.module.css";
+import styles from "@/styles/components/Contact.module.css";
 
 export default function Contact() {
   return (

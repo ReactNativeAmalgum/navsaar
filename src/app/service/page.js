@@ -5,7 +5,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Pagination, Navigation } from "swiper/modules";
-import styles from "@/styles/components/service.module.css";
+import styles from "@/styles/components/Service.module.css";
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
