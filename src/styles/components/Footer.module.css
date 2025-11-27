@@ -1,0 +1,120 @@
+.footer {
+  background: url("https://gasinforest.com/wordpress/arquito/wp-content/uploads/2019/06/attachment-10.jpg")
+    no-repeat center center;
+  background-size: cover;
+  color: #b3b3b3;
+  padding: 60px 40px;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  /* max-width: 1200px; */
+  margin: 0 auto;
+}
+
+.column h5 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.column ul li {
+  margin-bottom: 10px;
+}
+
+.column ul li a {
+  color: #b3b3b3;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.column ul li a:hover {
+  color: #fff;
+}
+
+.column p {
+  margin: 6px 0;
+  font-size: 14px;
+}
+
+.newsletter {
+  display: flex;
+  align-items: center;
+}
+
+.newsletter input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-radius: 4px 0 0 4px;
+}
+
+.newsletter button {
+  background: #fff;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.newsletter button:hover {
+  background: #ddd;
+}
+
+.bottomBar {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 40px;
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  font-size: 14px;
+  color: #b3b3b3;
+}
+
+.bold {
+  font-weight: bold;
+  color: #fff;
+}
+
+.socials {
+  display: flex;
+  gap: 20px;
+  font-size: 18px;
+}
+
+.socials a {
+  color: #b3b3b3;
+  transition: color 0.3s;
+}
+
+.socials a:hover {
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,229 @@
+.banner {
+  position: relative;
+  height: 100vh;
+  background-image: url("/service.jpg"); /* your image */
+  background-size: cover;
+  background-position: center;
+  transition: opacity 0.5s ease;
+}
+
+/* Dark overlay layer */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;           
+  justify-content: center;    
+  align-items: center;          
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 2;
+}
+
+/* Content wrapper */
+.content {
+  position: relative;
+  z-index: 3;
+  text-align: left; /* ✅ center text */
+  color: #fff;
+  padding: 180px  270px 120px; /* optional: spacing for small screens */
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+
+.hello {
+  font-size: 24px;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.056px;
+}
+
+.title {
+  font-size: 160px;
+  font-weight: normal;
+  margin-bottom: 1rem;
+  font-family: "Teko";
+}
+
+.description {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+.serviceContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.swiperContainer{
+  margin-top:50px
+}
+
+.customBoxRow {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  width: 100%;
+}
+
+.leftBoxCol {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.rightBoxCol {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* === RESPONSIVE DESIGN === */
+
+/* 🟡 Large Tablets (≤ 1200px) */
+@media (max-width: 1200px) {
+  .content {
+    padding: 140px 160px 100px;
+  }
+
+  .title {
+    font-size: 120px;
+  }
+
+  .hello {
+    font-size: 20px;
+  }
+
+  .description {
+    font-size: 0.95rem;
+  }
+
+  .custom-box-1 {
+    height: 360px;
+  }
+
+  .custom-box {
+    height: 260px;
+  }
+}
+
+/* 🟠 Tablets (≤ 992px) */
+@media (max-width: 992px) {
+  .content {
+    padding: 120px 80px 80px;
+    text-align: center;
+  }
+
+  .title {
+    font-size: 90px;
+  }
+
+  .hello {
+    font-size: 18px;
+  }
+
+  .description {
+    font-size: 0.9rem;
+  }
+
+  .custom-box-1,
+  .custom-box {
+    height: 320px;
+  }
+
+  /* Stack left and right boxes vertically */
+  .swiper-slide .row {
+    flex-direction: column;
+  }
+
+  .swiper-slide .col-6 {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .prev-btn,
+  .next-btn {
+    width: 42px !important;
+    height: 42px !important;
+    font-size: 1.2rem !important;
+  }
+}
+
+/* 🔵 Mobile (≤ 768px) */
+@media (max-width: 768px) {
+  .banner {
+    height: 80vh;
+  }
+
+  .content {
+    padding: 100px 30px 60px;
+    text-align: center;
+  }
+
+  .title {
+    font-size: 60px;
+    line-height: 1.1;
+  }
+
+  .hello {
+    font-size: 16px;
+  }
+
+  .description {
+    font-size: 0.9rem;
+  }
+
+  .custom-box-1,
+  .custom-box {
+    height: 280px;
+  }
+
+  .custom-box-content {
+    padding: 1rem;
+  }
+
+  .prev-btn,
+  .next-btn {
+    display: none !important;
+  }
+}
+
+/* 🔴 Small Mobile (≤ 480px) */
+@media (max-width: 480px) {
+  .title {
+    font-size: 45px;
+  }
+
+  .hello {
+    font-size: 14px;
+  }
+
+  .content {
+    padding: 80px 20px 50px;
+  }
+
+  .custom-box-1,
+  .custom-box {
+    height: 240px;
+  }
+  .swiperContainer{
+    margin-right: 0px !important;
+  }
+  .customBoxRow {
+    flex-direction: column;
+  }
+
+  .leftBoxCol,
+  .rightBoxCol {
+    width: 100%;
+    flex: unset;
+  }
+}
