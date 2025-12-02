@@ -7,13 +7,17 @@ import styles from "@/styles/components/Navbar.module.css";
 
 export default function Navbar() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false); // ✅ NEW
   const pathname = usePathname();
   const dropdownRef = useRef(null);
 
   const toggleSidebar = () => setSidebarOpen((prev) => !prev);
-  const closeSidebar = () => setSidebarOpen(false);
+  const closeSidebar = () => {
+    setSidebarOpen(false);
+    setMobileServicesOpen(false); // close submenu on exit
+  };
 
-  // ✅ Services (match with your ServiceDetailPage)
+  // Services list
   const serviceItems = {
     "Design & Planning": "design-planning",
     "Interior Design": "interior-design",
@@ -27,7 +31,7 @@ export default function Navbar() {
     { label: "Contact", href: "/contact" },
   ];
 
-  // ✅ Dropdown hover show/hide logic
+  // Desktop dropdown hover
   useEffect(() => {
     const dropdown = dropdownRef.current;
     if (!dropdown) return;
@@ -63,12 +67,13 @@ export default function Navbar() {
     <>
       <nav className={`${styles.navbarContainer} fixed-top px-5`}>
         <div className="container-fluid d-flex justify-content-between align-items-center">
+
           {/* Brand */}
           <Link href="/" className={styles.navbarBrand}>
             Navsaar
           </Link>
 
-          {/* Burger menu */}
+          {/* Burger */}
           <div
             className={`${styles.burger} ${
               sidebarOpen ? styles.burgerOpen : ""
@@ -98,13 +103,11 @@ export default function Navbar() {
                       }`}
                       href="#"
                       role="button"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
                     >
                       {label}
                     </a>
 
-                    {/* ✅ Services Dropdown */}
+                    {/* Desktop Dropdown */}
                     <ul className="dropdown-menu border-0 shadow-sm mt-2 show-on-hover">
                       {Object.entries(serviceItems).map(([title, slug], i) => (
                         <li key={i}>
@@ -145,28 +148,62 @@ export default function Navbar() {
         }`}
       >
         <ul className={styles.sidebarNavLinks}>
-          {navItems.map(({ label, href }) => (
-            <li key={href} className={styles.navItem}>
-              <Link
-                href={href}
-                className={`${styles.navLink} ${
-                  pathname === href ? styles.activeLink : ""
-                }`}
-                onClick={closeSidebar}
-              >
-                {label}
-              </Link>
-            </li>
-          ))}
+          {navItems.map(({ label, href }) => {
+            if (label === "Services") {
+              return (
+                <li key={href} className={styles.navItem}>
+                  <span
+                    className={styles.navLink}
+                    onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                  >
+                    Services
+                  </span>
+
+                  {/* Mobile accordion */}
+<ul
+  className={`${styles.mobileDropdown} ${
+    mobileServicesOpen ? styles.dropdownOpen : styles.dropdownClosed
+  }`}
+>
+  {Object.entries(serviceItems).map(([title, slug]) => (
+    <li className={styles.mobileLi} key={slug}>
+      <Link
+        href={`/service/${slug}`}
+        className={styles.mobileDropdownItem}
+        onClick={closeSidebar}
+      >
+        {title}
+      </Link>
+    </li>
+  ))}
+</ul>
+
+                </li>
+              );
+            }
+
+            return (
+              <li key={href} className={styles.navItem}>
+                <Link
+                  href={href}
+                  className={`${styles.navLink} ${
+                    pathname === href ? styles.activeLink : ""
+                  }`}
+                  onClick={closeSidebar}
+                >
+                  {label}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       </div>
 
-      {/* Backdrop */}
+      {/* BACKDROP */}
       {sidebarOpen && (
         <div className={styles.backdrop} onClick={closeSidebar}></div>
       )}
 
-      {/* ✅ Orange Hover Effect for Dropdown */}
       <style jsx global>{`
         .dropdown-menu {
           transition: all 0.2s ease;
@@ -179,4 +216,3 @@ export default function Navbar() {
     </>
   );
 }
-
