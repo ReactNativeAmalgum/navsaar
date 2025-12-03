@@ -67,7 +67,6 @@ export default function Navbar() {
     <>
       <nav className={`${styles.navbarContainer} fixed-top px-5`}>
         <div className="container-fluid d-flex justify-content-between align-items-center">
-
           {/* Brand */}
           <Link href="/" className={styles.navbarBrand}>
             Navsaar
@@ -86,7 +85,7 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Navigation */}
-          <ul className={`${styles.desktopNavLinks} d-flex align-items-center`}>
+          <ul className={`${styles.desktopNavLinks} align-items-center`}>
             {navItems.map(({ label, href }) => {
               const isActive = pathname === href;
 
@@ -160,24 +159,25 @@ export default function Navbar() {
                   </span>
 
                   {/* Mobile accordion */}
-<ul
-  className={`${styles.mobileDropdown} ${
-    mobileServicesOpen ? styles.dropdownOpen : styles.dropdownClosed
-  }`}
->
-  {Object.entries(serviceItems).map(([title, slug]) => (
-    <li className={styles.mobileLi} key={slug}>
-      <Link
-        href={`/service/${slug}`}
-        className={styles.mobileDropdownItem}
-        onClick={closeSidebar}
-      >
-        {title}
-      </Link>
-    </li>
-  ))}
-</ul>
-
+                  <ul
+                    className={`${styles.mobileDropdown} ${
+                      mobileServicesOpen
+                        ? styles.dropdownOpen
+                        : styles.dropdownClosed
+                    }`}
+                  >
+                    {Object.entries(serviceItems).map(([title, slug]) => (
+                      <li className={styles.mobileLi} key={slug}>
+                        <Link
+                          href={`/service/${slug}`}
+                          className={styles.mobileDropdownItem}
+                          onClick={closeSidebar}
+                        >
+                          {title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
                 </li>
               );
             }
