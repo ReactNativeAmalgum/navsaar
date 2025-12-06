@@ -16,12 +16,9 @@ export default function Home() {
       <ZoomImage hidden={hidden} setHidden={setHidden} />
       <AboutUs />
       <OurServices2 />
-      {/* <OurServices /> */}
-      {/* <OurServices3 /> */}
-      <Gallery />
-      {/* <Work /> */}
-      {/* <OurServices2 /> */}
-      <Testimonial />
+      {/* <Gallery />
+
+      <Testimonial /> */}
     </>
   );
 }

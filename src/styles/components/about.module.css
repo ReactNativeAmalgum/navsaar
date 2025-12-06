@@ -99,3 +99,186 @@
 .moreLink:hover {
   color: #e54b1c;
 }
+
+
+/* ============================= */
+/*      FULL RESPONSIVE DESIGN   */
+/* ============================= */
+
+/* Desktop down to 1200px */
+@media (max-width: 1200px) {
+  .heading {
+    font-size: 60px;
+    line-height: 56px !important;
+  }
+
+  .imageWrapper {
+    width: 70%;
+    height: 500px;
+  }
+
+  .experienceBox {
+    height: 450px;
+  }
+
+  .years {
+    font-size: 110px;
+  }
+}
+
+/* Tablets (992px) */
+@media (max-width: 992px) {
+  .container {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+
+  .experienceBox {
+    height: 420px;
+  }
+
+  .heading {
+    font-size: 52px;
+    line-height: 52px !important;
+    text-align: center;
+  }
+
+  .textContent {
+    text-align: center;
+    padding: 0 15px;
+  }
+}
+
+/* Small Tablets & Large Phones (768px) */
+@media (max-width: 768px) {
+  .imageWrapper {
+    width: 100% !important;
+    height: 400px;
+  }
+
+  .experienceBox {
+    width: 92%;
+    height: 350px;
+    padding: 20px;
+  }
+
+  .years {
+    font-size: 85px;
+  }
+
+  .heading {
+    font-size: 40px;
+    line-height: 44px !important;
+  }
+}
+
+/* Regular Phones (576px) — iPhone 11 size */
+@media (max-width: 576px) {
+  .custom_left_cont{
+    width: -webkit-fill-available;
+  }
+  .imageWrapper {
+    width: 100% !important;
+    height: 340px;
+  }
+
+  .experienceBox {
+    height: 310px;
+  }
+
+  .years {
+    font-size: 70px;
+  }
+
+  .heading {
+    font-size: 32px;
+    line-height: 34px !important;
+  }
+
+  .description {
+    font-size: 15px;
+  }
+
+  .moreLink {
+    font-size: 13px;
+  }
+}
+
+/* Small Phones (430–360px) — iPhone Mini, Samsung S series */
+@media (max-width: 430px) {
+  .container {
+    gap: 30px;
+  }
+
+  .imageWrapper {
+    height: 300px;
+  }
+
+  .experienceBox {
+    height: 260px;
+    padding: 18px;
+  }
+
+  .years {
+    font-size: 60px;
+  }
+
+  .heading {
+    font-size: 26px;
+    line-height: 30px !important;
+  }
+
+  .description {
+    font-size: 14px;
+  }
+}
+
+/* Extra Small Phones (≤360px) — older Androids, very small screens */
+@media (max-width: 360px) {
+  .imageWrapper {
+    height: 260px;
+  }
+
+  .experienceBox {
+    height: 230px;
+    padding: 15px;
+  }
+
+  .years {
+    font-size: 50px;
+  }
+
+  .heading {
+    font-size: 22px;
+    line-height: 26px !important;
+  }
+
+  .description {
+    font-size: 13px;
+  }
+}
+
+/* Ultra Small (≤320px) — smallest phones allowed */
+@media (max-width: 320px) {
+  .imageWrapper {
+    height: 240px;
+    width: 100% !important;
+  }
+
+  .experienceBox {
+    height: 210px;
+  }
+
+  .years {
+    font-size: 42px;
+  }
+
+  .heading {
+    font-size: 20px;
+  }
+
+  .description {
+    font-size: 12px;
+  }
+}

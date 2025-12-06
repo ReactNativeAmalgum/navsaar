@@ -7,7 +7,7 @@ export default function AboutUs() {
     <section className={` section_padding ${styles.aboutSection}`}>
       <div className={`container ${styles.container}`}>
         {/* Left side: Experience Box */}
-        <div className="col-lg-6 col-md-12 align-items-center d-flex justify-content-center">
+        <div className={`col-lg-6 col-md-12 align-items-center d-flex justify-content-center ${styles.custom_left_cont}`}>
           <div className={styles.imageWrapper}>
             <div className={styles.experienceBox}>
               <div className={styles.since}>
