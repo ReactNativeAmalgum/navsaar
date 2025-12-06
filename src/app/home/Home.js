@@ -13,12 +13,12 @@ export default function Home() {
   const [hidden, setHidden] = useState(false);
   return (
     <>
-      <ZoomImage hidden={hidden} setHidden={setHidden} />
-      {/* <AboutUs /> */}
-      {/* <OurServices2 /> */}
-      {/* <Gallery />
+      {/* <ZoomImage hidden={hidden} setHidden={setHidden} /> */}
+      <AboutUs />
+      <OurServices2 />
+      <Gallery />
 
-      <Testimonial /> */}
+      <Testimonial />
     </>
   );
 }
