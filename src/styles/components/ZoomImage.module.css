@@ -323,6 +323,9 @@
   .paragraph {
     font-size: 18px;
   }
+  .container {
+    height: 20vh !important;
+  }
 }
 
 @media (max-width: 480px) {
@@ -346,13 +349,13 @@
   .section {
     position: relative !important;
     height: auto !important;
-    min-height: 100vh !important;
+    min-height: 50vh !important;
   }
 
   /* Unlock hero container height */
   .container {
     height: auto !important;
-    min-height: 100vh !important;
+    min-height: 50vh !important;
   }
 
   /* Allow wrapper to grow normally */
