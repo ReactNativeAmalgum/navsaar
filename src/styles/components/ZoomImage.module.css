@@ -1,5 +1,5 @@
 /* ============================================================
-   ZOOM HERO – FULL CSS WITH MOBILE SCROLL FIX
+   ZOOM HERO – FULL CSS WITH MOBILE SCROLL FIX ✅
 ============================================================ */
 
 /* ================================
@@ -32,6 +32,8 @@
   width: 100% !important;
   height: 100%;
   z-index: 10;
+
+  /* 🔐 Default = do NOT block scroll clicks */
   pointer-events: none;
 }
 
@@ -76,6 +78,9 @@
   z-index: -1;
   will-change: transform, opacity;
   transition: transform 2.1s ease, opacity 2.1s ease;
+
+  /* 🔐 Never allow overlays to grab touches */
+  pointer-events: none;
 }
 
 /* Mountain full screen */
@@ -110,11 +115,7 @@
   opacity: 1;
 }
 
-.scrollZoom1 {
-  transform: scale(0.8) !important;
-  transition: transform 0.6s ease;
-}
-
+.scrollZoom1,
 .scrollZoom2 {
   transform: scale(0.8) !important;
   transition: transform 0.6s ease;
@@ -193,7 +194,6 @@
   line-height: 0.91;
   margin-bottom: 5vh;
   color: rgb(14, 13, 13);
-
   position: relative;
   display: inline-block;
   overflow: hidden;
@@ -231,7 +231,6 @@
   line-height: 1;
   margin-bottom: 3vh;
   color: #020202;
-
   position: relative;
   display: inline-block;
   overflow: hidden;
@@ -269,7 +268,6 @@
   font-weight: 400;
   line-height: 1.4;
   color: rgb(30, 29, 29);
-
   margin: 0;
   position: relative;
   display: inline-block;
@@ -304,72 +302,59 @@
 ================================ */
 
 @media (max-width: 1024px) {
-  .heading {
-    font-size: 60px;
-  }
-
+  .heading { font-size: 60px; }
   .title,
-  .paragraph {
-    font-size: 20px;
-  }
+  .paragraph { font-size: 20px; }
 }
 
 @media (max-width: 768px) {
-  .heading {
-    font-size: 48px;
-  }
-
+  .heading { font-size: 48px; }
   .title,
-  .paragraph {
-    font-size: 18px;
-  }
-  .container {
-    height: 20vh !important;
-  }
+  .paragraph { font-size: 18px; }
 }
 
 @media (max-width: 480px) {
-  .heading {
-    font-size: 36px;
-  }
-
+  .heading { font-size: 36px; }
   .title,
-  .paragraph {
-    font-size: 16px;
-  }
+  .paragraph { font-size: 16px; }
 }
 
 /* ============================================================
-   ✅ MOBILE SCROLL UNLOCK – FIX FOR REDMI & ALL PHONES
+   ✅ MOBILE SCROLL UNLOCK – FINAL FIX
 ============================================================ */
 
 @media (max-width: 768px) {
 
-  /* ✅ Disable sticky locking */
+  /* 🚫 Kill sticky locking */
   .section {
     position: relative !important;
     height: auto !important;
     min-height: 100vh !important;
   }
 
-  /* ✅ Let container expand normally */
+  /* ✅ Natural layout growth */
   .container {
     height: auto !important;
     min-height: 100vh !important;
     overflow: visible !important;
   }
 
-  /* ✅ Remove absolute layout locking */
-  .zoom-image-container {
-    position: relative !important;
-    height: auto !important;
-    pointer-events: auto !important;
+  /* ✅ Overlay MUST NEVER trap touches */
+  .zoom-image-container,
+  .background1,
+  .background2 {
+    pointer-events: none !important;
   }
 
-  /* ✅ Lightweight animations for mobile */
+  /* ✅ Mobile performance */
   .background1,
   .background2 {
     will-change: auto !important;
     transition: transform 1s ease, opacity 1s ease !important;
+  }
+
+  body {
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
   }
 }
