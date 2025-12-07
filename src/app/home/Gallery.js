@@ -1,4 +1,6 @@
-'use client';
+"use client";
+
+import styles from "@/styles/components/Project.module.css";
 import React, { useRef } from "react";
 import dynamic from "next/dynamic";
 import { Carousel, Button } from "react-bootstrap";
@@ -8,51 +10,52 @@ const CompareSlider = dynamic(() => import("react-compare-image"), {
 });
 
 const galleryItems = {
-  "Residential Architecture": [
-    {
-      beforeSrc:
-        "https://5.imimg.com/data5/SELLER/Default/2023/3/295059929/QK/YL/AI/14768853/residential-house-architecture-service.jpg",
-      afterSrc:
-        "https://www.arch2o.com/wp-content/uploads/2019/03/Arch2O-Modern-Residential-House-Design-3.jpg",
-      title: "Modern Residence",
-    },
-  ],
-  "Commercial Architecture": [
-    {
-      beforeSrc:
-        "https://cdn.decoist.com/wp-content/uploads/2017/06/Commercial-building-facade-design.jpg",
-      afterSrc:
-        "https://assets.architecturaldigest.in/photos/600834e423c2521e15e6b856/master/pass/Architecture-modern-office-building-design-1366x768.jpg",
-      title: "Corporate Office",
-    },
-  ],
-  "Living Room Interiors": [
+  "Living Room": [
     {
       beforeSrc:
         "https://media.designcafe.com/wp-content/uploads/2022/07/29185240/industrial-rustic-living-room-in-earthy-tones.jpg",
       afterSrc:
         "https://chiedesign.in/wp-content/uploads/2022/05/Luxury-Interior-Design-Living-Room-1080x675.jpg",
-      title: "Luxury Living Room",
+      title: "Laura's Living Room",
+    },
+    {
+      beforeSrc:
+        "https://media.designcafe.com/wp-content/uploads/2023/01/31151510/contemporary-interior-design-ideas-for-your-home.jpg",
+      afterSrc:
+        "https://media.designcafe.com/wp-content/uploads/2023/07/05195443/modern-interior-design.jpg",
+      title: "Heather's Living Room",
     },
   ],
-  "Bedroom Interiors": [
+  Bedroom: [
     {
       beforeSrc:
         "https://static.asianpaints.com/content/dam/asianpaintsbeautifulhomes/gallery/living-room/classic-contemporary-living-room-with-marble-wall-paneling-and-maroon-accent-chairs/contemporary-living-room-with-beige-sofa.jpg.transform/bh-gallery-listing/image.webp",
       afterSrc:
         "https://images.pexels.com/photos/3797991/pexels-photo-3797991.jpeg?cs=srgb&dl=pexels-houzlook-3797991.jpg&fm=jpg",
-      title: "Contemporary Bedroom",
+      title: "Virginia's Bedroom",
+    },
+  ],
+  "Dining Room": [
+    {
+      beforeSrc:
+        "https://media.designcafe.com/wp-content/uploads/2023/01/31151510/contemporary-interior-design-ideas-for-your-home.jpg",
+      afterSrc:
+        "https://media.designcafe.com/wp-content/uploads/2023/07/05195443/modern-interior-design.jpg",
+      title: "Heather's Dining Room",
+    },
+  ],
+  Kitchen: [
+    {
+      beforeSrc:
+        "https://media.designcafe.com/wp-content/uploads/2023/01/31151510/contemporary-interior-design-ideas-for-your-home.jpg",
+      afterSrc:
+        "https://media.designcafe.com/wp-content/uploads/2023/07/05195443/modern-interior-design.jpg",
+      title: "Heather's Kitchen",
     },
   ],
 };
 
-const buttons = [
-  "Residential Architecture",
-  "Commercial Architecture",
-  "Living Room Interiors",
-  "Bedroom Interiors",
-];
-// Custom component to prevent jump on click but allow dragging
+const buttons = ["Living Room", "Bedroom", "Dining Room", "Kitchen"];
 function NoClickJumpCompare({ leftImage, rightImage, alt }) {
   const startX = useRef(null);
   const startY = useRef(null);
@@ -112,18 +115,42 @@ function NoClickJumpCompare({ leftImage, rightImage, alt }) {
     </div>
   );
 }
-
 export default function Gallery() {
-  const [activeBtn, setActiveBtn] = React.useState("Residential Architecture");
+  const [showMore, setShowMore] = React.useState(false); // for Read More
+  const [showDropdown, setShowDropdown] = React.useState(false); // for dropdown
+
+  const [activeBtn, setActiveBtn] = React.useState("Living Room");
   const [links, setLinks] = React.useState([]);
   const [carouselItems, setCarouselItems] = React.useState(
-    galleryItems["Residential Architecture"]
+    galleryItems["Living Room"]
   );
   const [activeSubLink, setActiveSubLink] = React.useState("");
   const [activeIndex, setActiveIndex] = React.useState(0);
+  const [windowWidth, setWindowWidth] = React.useState(0);
 
   React.useEffect(() => {
-    handleMainCategoryClick("Residential Architecture");
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+  React.useEffect(() => {
+    handleMainCategoryClick("Living Room"); // default
+  }, []);
+  React.useEffect(() => {
+    handleMainCategoryClick("Living Room"); // default
+  }, []);
+
+  const dropdownRef = useRef();
+
+  React.useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setShowMore(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const handleMainCategoryClick = (category) => {
@@ -157,86 +184,124 @@ export default function Gallery() {
   const goNext = () => {
     if (activeIndex < carouselItems.length - 1) setActiveIndex(activeIndex + 1);
   };
-
   return (
-    <section className="py-5 bg-ligh section_padding">
-      <div className="container">
-        {/* Main Category Buttons */}
-        <div className="headerContainer">
-          <div className="left-cont">
-            <h2 className="label">Our Works</h2>
-          </div>
-          <div className="right-cont">
-            <ul className="custom-list text-center">
-              {buttons.map((btn, idx) => (
-                <li key={idx} className="px-3 py-2">
+    <>
+      <section className={`contianer section_padding ${styles.imageSection}`}>
+        <div className="container">
+          {/* Main Category Buttons */}
+          <div className={styles.headerContainer}>
+            <div className="left-cont">
+              <h2 className="label">Our Works</h2>
+            </div>
+            <div className={styles.rightCont}>
+              {windowWidth < 1024 ? (
+                <div className={styles.dropdownContainer} ref={dropdownRef}>
                   <button
-                    className={`custom-btn ${
-                      activeBtn === btn ? "active" : ""
-                    }`}
-                    onClick={() => handleMainCategoryClick(btn)}
+                    className={styles.dropdownToggle}
+                    onClick={() => setShowDropdown((prev) => !prev)}
                   >
-                    {btn}
+                    {activeBtn}{" "}
+                    <span className={styles.arrow}>
+                      {/* <i className={`${card.iconClass}`} style={{ fontSize: "42px", color:'#f24a00' }}></i> */}
+
+                      {showDropdown ? (
+                        <i className="caret up"></i>
+                      ) : (
+                        <i className="caret down"></i>
+                      )}
+                    </span>
                   </button>
-                </li>
-              ))}
-              <button
-                className={`custom-btn`}
-                onClick={() => handleMainCategoryClick("Explore More")}
-              >
-                Explore More
-              </button>
+
+                  {showDropdown && (
+                    <ul className={styles.dropdownMenu}>
+                      {buttons.map((btn, idx) => (
+                        <li key={idx}>
+                          <button
+                            className={`${styles.dropdownItem} ${
+                              activeBtn === btn ? styles.active : ""
+                            }`}
+                            onClick={() => {
+                              handleMainCategoryClick(btn);
+                              setShowDropdown(false);
+                            }}
+                          >
+                            {btn}
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ) : (
+                <ul className="custom-list text-center">
+                  {buttons.map((btn, idx) => (
+                    <li key={idx} className="px-3 py-2">
+                      <button
+                        className={`custom-btn ${
+                          activeBtn === btn ? "active" : ""
+                        }`}
+                        onClick={() => handleMainCategoryClick(btn)}
+                      >
+                        {btn}
+                      </button>
+                    </li>
+                  ))}
+                  <button
+                    className={`custom-btn`}
+                    onClick={() => handleMainCategoryClick("Explore More")}
+                  >
+                    Explore More
+                  </button>
+                </ul>
+              )}
+            </div>
+          </div>
+
+          {/* Subcategory Buttons */}
+          <div className="subHeader">
+            <ul className="subLabel">
+              {Array.isArray(links) &&
+                links.map((link, idx) => (
+                  <li key={idx} className="px-3 py-2 d-inline">
+                    <button
+                      className={`custom-btn ${
+                        activeSubLink === link ? "active" : ""
+                      }`}
+                      onClick={() => handleSubLinkClick(link)}
+                    >
+                      {link}
+                    </button>
+                  </li>
+                ))}
             </ul>
           </div>
-        </div>
 
-        {/* Subcategory Buttons */}
-        <div className="subHeader">
-          <ul className="subLabel">
-            {Array.isArray(links) &&
-              links.map((link, idx) => (
-                <li key={idx} className="px-3 py-2 d-inline">
-                  <button
-                    className={`custom-btn ${
-                      activeSubLink === link ? "active" : ""
-                    }`}
-                    onClick={() => handleSubLinkClick(link)}
-                  >
-                    {link}
-                  </button>
-                </li>
-              ))}
-          </ul>
-        </div>
-
-        {/* Carousel */}
-        <Carousel
-          activeIndex={activeIndex}
-          onSelect={handleSelect}
-          slide={false}
-          variant="dark"
-          className="before-after-carousel mt-5"
-          controls={false} // hide default controls
-          indicators={false} // hide indicators if you want
-        >
-          {carouselItems.map((item, idx) => (
-            <Carousel.Item key={idx}>
-              <div className="d-flex justify-content-center">
-                <div className="card before-after-card border-0 p-3">
-                  <NoClickJumpCompare
-                    leftImage={item.beforeSrc}
-                    rightImage={item.afterSrc}
-                    alt={`${item.title} Comparison`}
-                  />
+          {/* Carousel */}
+          <Carousel
+            activeIndex={activeIndex}
+            onSelect={handleSelect}
+            slide={false}
+            variant="dark"
+            className="before-after-carousel mt-5"
+            controls={false} // hide default controls
+            indicators={false} // hide indicators if you want
+          >
+            {carouselItems.map((item, idx) => (
+              <Carousel.Item key={idx}>
+                <div className="d-flex justify-content-center">
+                  <div className="card before-after-card border-0 p-3">
+                    <NoClickJumpCompare
+                      leftImage={item.beforeSrc}
+                      rightImage={item.afterSrc}
+                      alt={`${item.title} Comparison`}
+                    />
+                  </div>
                 </div>
-              </div>
-            </Carousel.Item>
-          ))}
-        </Carousel>
-
-        
-      </div>
-
+              </Carousel.Item>
+            ))}
+          </Carousel>
+        </div>
+      </section>
       <style jsx>{`
         .before-after-card {
           width: 100%;
@@ -245,15 +310,7 @@ export default function Gallery() {
           font-weight: 600;
           font-size: 1.25rem;
         }
-        .headerContainer {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-        .right-cont {
-          flex: 1;
-          padding-right: 25px;
-        }
+
         .custom-list,
         .subLabel {
           list-style: none;
@@ -275,7 +332,7 @@ export default function Gallery() {
           font-weight: 500;
         }
         .custom-btn.active {
-          color: #f24a00;
+          color: #000000ff;
           text-decoration: none;
         }
         .subHeader {
@@ -283,7 +340,29 @@ export default function Gallery() {
           justify-content: center;
           padding-top: 30px;
         }
+        .caret {
+          display: inline-block;
+          width: 8px;
+          height: 8px;
+          margin-left: 8px;
+          border-right: 2px solid #f24a00;
+          border-bottom: 2px solid #f24a00;
+          transform: rotate(45deg);
+          transition: transform 0.3s ease;
+          vertical-align: middle;
+          color: black;
+        }
+
+        /* v caret (downward) */
+        .caret.down {
+          transform: rotate(45deg);
+        }
+
+        /* ^ caret (upward) */
+        .caret.up {
+          transform: rotate(-135deg);
+        }
       `}</style>
-    </section>
+    </>
   );
 }

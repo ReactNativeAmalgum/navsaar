@@ -17,7 +17,6 @@ export default function Home() {
       <AboutUs />
       <OurServices2 />
       <Gallery />
-
       <Testimonial />
     </>
   );

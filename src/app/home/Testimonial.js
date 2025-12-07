@@ -73,20 +73,18 @@ export default function TestimonialCarousel() {
   return (
     <section
       ref={sectionRef}
-      className={`text-white position-relative section_padding ${styles.testimonialSection}`}
+      className={`text-dark position-relative section_padding ${styles.testimonialSection}`}
     >
       <div className="container position-relative">
         {/* Title */}
-        <div className="d-flex justify-content-between align-items-center mb-4">
-          <h2 className="text-white">Loved from clients</h2>
+        <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4">
+              <h2 className="label">Love from our clients</h2>
           {/* Custom Prev / Next Buttons */}
-          <div>
+          <div className="d-flex">
             <button
               ref={prevRef}
               className="btn btn-outline-dark me-2"
               type="button"
-              data-bs-target="#testimonialCarousel"
-              data-bs-slide="prev"
             >
               ← Prev
             </button>
@@ -94,8 +92,6 @@ export default function TestimonialCarousel() {
               ref={nextRef}
               className="btn btn-outline-dark"
               type="button"
-              data-bs-target="#testimonialCarousel"
-              data-bs-slide="next"
             >
               Next →
             </button>
@@ -106,13 +102,14 @@ export default function TestimonialCarousel() {
           {/* Swiper Carousel */}
           <Swiper
             modules={[Navigation, Pagination]}
-            spaceBetween={30}
+            spaceBetween={20}
             slidesPerView={1}
             pagination={{ clickable: true }}
             loop={true}
             breakpoints={{
-              768: { slidesPerView: 2 },
-              1200: { slidesPerView: 3 },
+              640: { slidesPerView: 1, spaceBetween: 15 },
+              768: { slidesPerView: 2, spaceBetween: 20 },
+              1200: { slidesPerView: 3, spaceBetween: 30 },
             }}
             onInit={(swiper) => {
               swiper.params.navigation.prevEl = prevRef.current;
@@ -123,13 +120,10 @@ export default function TestimonialCarousel() {
             className="pb-5"
           >
             {testimonials.map((test, idx) => (
-              <SwiperSlide key={idx}>
-                <div
-                  style={{ height: 250 }}
-                  className={`p-4 bg-white text-dark rounded shadow text-start ${styles.testimonialCard}`}
-                >
+              <SwiperSlide key={idx} className="d-flex justify-content-center">
+                <div className={`p-4 ${styles.testimonialCard}`}>
                   <p className="mb-3">{test.quote}</p>
-                  <div className="d-flex align-items-center">
+                  <div className="d-flex align-items-center mt-auto">
                     <Image
                       src={test.image}
                       alt={test.name}
