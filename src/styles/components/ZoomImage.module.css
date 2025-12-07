@@ -345,30 +345,31 @@
 
 @media (max-width: 768px) {
 
-  /* Remove sticky scroll traps */
+  /* ✅ Disable sticky locking */
   .section {
     position: relative !important;
     height: auto !important;
-    min-height: 50vh !important;
+    min-height: 100vh !important;
   }
 
-  /* Unlock hero container height */
+  /* ✅ Let container expand normally */
   .container {
     height: auto !important;
-    min-height: 50vh !important;
+    min-height: 100vh !important;
+    overflow: visible !important;
   }
 
-  /* Allow wrapper to grow normally */
+  /* ✅ Remove absolute layout locking */
   .zoom-image-container {
     position: relative !important;
     height: auto !important;
     pointer-events: auto !important;
   }
 
-  /* Smooth + lightweight transforms */
+  /* ✅ Lightweight animations for mobile */
   .background1,
   .background2 {
-    transition: transform 1s ease, opacity 1s ease !important;
     will-change: auto !important;
+    transition: transform 1s ease, opacity 1s ease !important;
   }
 }
