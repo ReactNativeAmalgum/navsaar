@@ -145,3 +145,10 @@ a {
     color-scheme: dark;
   }
 }
+
+@media (max-width: 768px) {
+  body {
+    overflow-y: auto !important;
+    touch-action: pan-y !important;
+  }
+}

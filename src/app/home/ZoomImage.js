@@ -9,9 +9,14 @@ export default function ZoomImage({ hidden, setHidden }) {
   const sectionRef = useRef(null);
   const [manualScroll, setManualScroll] = useState(false);
   const [scrollLocked, setScrollLocked] = useState(true);
+  const isMobile = () =>
+    typeof window !== "undefined" && window.innerWidth <= 768;
 
   // Helper to lock/unlock body scroll
+
   const toggleBodyScroll = (lock) => {
+    if (isMobile()) return; // ✅ never lock scroll on phones
+
     if (typeof document !== "undefined") {
       document.body.style.overflow = lock ? "hidden" : "";
     }
@@ -19,7 +24,11 @@ export default function ZoomImage({ hidden, setHidden }) {
 
   useEffect(() => {
     setAnimate(true);
-    toggleBodyScroll(true);
+
+    // ✅ DO NOT LOCK SCROLL ON MOBILE PHONES
+    if (window.innerWidth > 768) {
+      toggleBodyScroll(true);
+    }
   }, []);
 
   useEffect(() => {
@@ -29,44 +38,32 @@ export default function ZoomImage({ hidden, setHidden }) {
     const handleScroll = () => {
       const rect = section.getBoundingClientRect();
       const windowHeight = window.innerHeight;
-      const currentScrollY = window.scrollY;
-      const isScrollingUp = currentScrollY < lastScrollY.current;
-      lastScrollY.current = currentScrollY;
 
       const background1 = section.querySelector(`.${styles.background1}`);
       const background2 = section.querySelector(`.${styles.background2}`);
 
       if (!background1 || !background2) return;
 
-      // Calculate scroll progress inside section (0 to 1)
-      const sectionTop = rect.top;
-      const sectionHeight = rect.height;
-
       if (rect.bottom > 0 && rect.top < windowHeight) {
         const progress = Math.min(
           1,
-          Math.max(
-            0,
-            (windowHeight - sectionTop) / (windowHeight + sectionHeight)
-          )
+          Math.max(0, (windowHeight - rect.top) / (windowHeight + rect.height))
         );
 
-        // Scale range: zoom out from 2.5 to 1 during progress 0 → 0.5
-        // After progress > 0.5, unlock scroll and scale normal 1 to 1.5 if scrolling more
         let scale;
+
         if (progress < 0.5) {
-          // Zoom out from 2.5 → 1 (as progress goes 0 → 0.5)
           scale = 2.5 - (progress / 0.5) * 1.5;
-          if (scrollLocked === false) setScrollLocked(true);
-          toggleBodyScroll(true); // lock scroll while zooming
+
+          if (!isMobile()) {
+            setScrollLocked(true);
+            toggleBodyScroll(true);
+          }
         } else {
-          // Zoom normal 1 → 1.5 (progress 0.5 → 1)
           scale = 1 + ((progress - 0.5) / 0.5) * 0.5;
 
-          if (scrollLocked) {
-            setScrollLocked(false);
-            toggleBodyScroll(false); // unlock scroll after zoom finishes
-          }
+          setScrollLocked(false);
+          toggleBodyScroll(false);
         }
 
         background1.style.transform = `scale(${scale})`;
@@ -74,29 +71,23 @@ export default function ZoomImage({ hidden, setHidden }) {
         background1.style.opacity = "1";
         background2.style.opacity = "1";
 
-        // Show/hide based on visibility
-        if (rect.top < windowHeight * 0.8 && rect.bottom > windowHeight * 0.2) {
-          setAnimate(true);
-          setHidden(false);
-        } else {
-          setAnimate(false);
-          setHidden(true);
-        }
+        setAnimate(true);
+        setHidden(false);
       } else {
-        // Section out of view
         setAnimate(false);
         setHidden(true);
+        toggleBodyScroll(false);
       }
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // initialize
+    handleScroll();
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      toggleBodyScroll(false); // unlock scroll on unmount just in case
+      toggleBodyScroll(false);
     };
-  }, [setHidden, scrollLocked]);
+  }, []);
 
   return (
     <div

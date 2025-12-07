@@ -131,6 +131,7 @@
   padding-left: 15% !important;
   padding-right: 15% !important;
   flex-direction: column !important;
+  pointer-events: auto;
 }
 
 /* ================================
@@ -302,23 +303,34 @@
 ================================ */
 
 @media (max-width: 1024px) {
-  .heading { font-size: 60px; }
+  .heading {
+    font-size: 60px;
+  }
   .title,
-  .paragraph { font-size: 20px; }
+  .paragraph {
+    font-size: 20px;
+  }
 }
 
 @media (max-width: 768px) {
-  .heading { font-size: 48px; }
+  .heading {
+    font-size: 48px;
+  }
   .title,
-  .paragraph { font-size: 18px; }
+  .paragraph {
+    font-size: 18px;
+  }
 }
 
 @media (max-width: 480px) {
-  .heading { font-size: 36px; }
+  .heading {
+    font-size: 36px;
+  }
   .title,
-  .paragraph { font-size: 16px; }
+  .paragraph {
+    font-size: 16px;
+  }
 }
-
 
 /* ======================================================
    ✅ MOBILE TOUCH UNBLOCK FIX
@@ -326,10 +338,9 @@
 ====================================================== */
 
 @media (max-width: 768px) {
-
   /* ✅ Allow browser to handle vertical scrolling normally */
   .container {
-    height: 100vh !important;     /* keep full hero */
+    height: 100vh !important; /* keep full hero */
     overflow: visible !important;
     touch-action: pan-y !important;
   }
