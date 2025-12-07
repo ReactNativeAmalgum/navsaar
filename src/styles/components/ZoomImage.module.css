@@ -319,42 +319,40 @@
   .paragraph { font-size: 16px; }
 }
 
-/* ============================================================
-   ✅ MOBILE SCROLL UNLOCK – FINAL FIX
-============================================================ */
+
+/* ======================================================
+   ✅ MOBILE TOUCH UNBLOCK FIX
+   This fixes Redmi / Android / iPhone scroll freezing
+====================================================== */
 
 @media (max-width: 768px) {
 
-  /* 🚫 Kill sticky locking */
+  /* ✅ Allow browser to handle vertical scrolling normally */
+  .container {
+    height: 100vh !important;     /* keep full hero */
+    overflow: visible !important;
+    touch-action: pan-y !important;
+  }
+
+  /* ✅ Remove sticky trapping on mobile */
   .section {
     position: relative !important;
     height: auto !important;
     min-height: 100vh !important;
   }
 
-  /* ✅ Natural layout growth */
-  .container {
-    height: auto !important;
-    min-height: 100vh !important;
-    overflow: visible !important;
-  }
-
-  /* ✅ Overlay MUST NEVER trap touches */
+  /* ✅ Make ALL overlay layers ignore touch completely */
   .zoom-image-container,
   .background1,
   .background2 {
     pointer-events: none !important;
+    touch-action: none !important;
   }
 
-  /* ✅ Mobile performance */
+  /* ✅ Mobile GPU stability */
   .background1,
   .background2 {
     will-change: auto !important;
     transition: transform 1s ease, opacity 1s ease !important;
-  }
-
-  body {
-    touch-action: pan-y;
-    -webkit-overflow-scrolling: touch;
   }
 }
