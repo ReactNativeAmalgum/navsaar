@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Home from "./home/Home";
-
+import './globals.css';
 export default function HomePage() {
   useEffect(() => {
     import("bootstrap/dist/js/bootstrap.bundle.min.js");

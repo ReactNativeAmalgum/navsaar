@@ -1,6 +1,5 @@
 // src/app/layout.js
 import { Geist, Geist_Mono, Teko, Roboto } from "next/font/google";
-import "./globals.css";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 // In layout.js (or _app.js)
