@@ -1,3 +1,7 @@
+/* ============================================================
+   ZOOM HERO – FULL CSS WITH MOBILE SCROLL FIX
+============================================================ */
+
 /* ================================
    MAIN CONTAINER
 ================================ */
@@ -68,9 +72,9 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  will-change: transform, opacity;
   opacity: 0;
   z-index: -1;
+  will-change: transform, opacity;
   transition: transform 2.1s ease, opacity 2.1s ease;
 }
 
@@ -84,18 +88,16 @@
   transform: translate(-10%, 0%) scale(2.5);
 }
 
-/* Bottom zoom asset */
+/* Diary building zoom layer */
 .background2 {
   bottom: 0;
   left: 0;
   width: 100%;
-  justify-self: baseline;
-  align-self: self-end;
   transform: translate(15%, 15%) scale(1.15);
 }
 
 /* ================================
-   ANIMATION STATES
+   ZOOM STATES
 ================================ */
 
 .animate1 {
@@ -108,7 +110,6 @@
   opacity: 1;
 }
 
-/* Manual scroll adjust */
 .scrollZoom1 {
   transform: scale(0.8) !important;
   transition: transform 0.6s ease;
@@ -136,33 +137,33 @@
 ================================ */
 
 @keyframes slideLeftFade {
-  0% {
+  from {
     transform: translateX(100%);
     opacity: 0;
   }
-  100% {
+  to {
     transform: translateX(0);
     opacity: 1;
   }
 }
 
 @keyframes underlineGrow {
-  0% {
+  from {
     transform: scaleX(0);
     opacity: 0;
   }
-  100% {
+  to {
     transform: scaleX(1);
     opacity: 1;
   }
 }
 
 @keyframes slideUpFade {
-  0% {
+  from {
     transform: translateY(100%);
     opacity: 0;
   }
-  100% {
+  to {
     transform: translateY(0);
     opacity: 1;
   }
@@ -192,6 +193,7 @@
   line-height: 0.91;
   margin-bottom: 5vh;
   color: rgb(14, 13, 13);
+
   position: relative;
   display: inline-block;
   overflow: hidden;
@@ -229,6 +231,7 @@
   line-height: 1;
   margin-bottom: 3vh;
   color: #020202;
+
   position: relative;
   display: inline-block;
   overflow: hidden;
@@ -266,6 +269,7 @@
   font-weight: 400;
   line-height: 1.4;
   color: rgb(30, 29, 29);
+
   margin: 0;
   position: relative;
   display: inline-block;
@@ -291,7 +295,7 @@
   transform: scaleX(0);
   transform-origin: right;
   opacity: 0;
-  animation: underlineGrow 0.6s ease-in-out forwards;
+  animation: underlineGrow 0.6s ease forwards;
   animation-delay: 1s;
 }
 
@@ -332,35 +336,36 @@
   }
 }
 
-/* =====================================================
-   ✅ MOBILE SCROLL FREEZE FIX
-===================================================== */
+/* ============================================================
+   ✅ MOBILE SCROLL UNLOCK – FIX FOR REDMI & ALL PHONES
+============================================================ */
 
 @media (max-width: 768px) {
 
-  /* disable sticky – major freeze cause */
+  /* Remove sticky scroll traps */
   .section {
     position: relative !important;
+    height: auto !important;
+    min-height: 100vh !important;
   }
 
-  /* unlock height trap */
+  /* Unlock hero container height */
   .container {
     height: auto !important;
     min-height: 100vh !important;
   }
 
-  /* normalize zoom wrapper */
+  /* Allow wrapper to grow normally */
   .zoom-image-container {
     position: relative !important;
     height: auto !important;
     pointer-events: auto !important;
   }
 
-  /* reduce mobile stutter */
+  /* Smooth + lightweight transforms */
   .background1,
   .background2 {
     transition: transform 1s ease, opacity 1s ease !important;
     will-change: auto !important;
   }
-
 }
