@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 // In layout.js (or _app.js)
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./globals.css";
 
 const teko = Teko({
   variable: "--font-teko",
