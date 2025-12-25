@@ -12,127 +12,340 @@ import { Pagination, Navigation } from "swiper/modules";
 
 // 🔹 SERVICE DATA
 const servicesData = {
-  "design-planning": {
+  "design-consultation": {
     banner: {
-      title: "Design & Planning",
-      subtitle: "Our specialization",
+      title: "Design Consultation",
+      subtitle: "Our Service",
       description:
-        "We craft thoughtful, innovative architectural designs that blend form and function beautifully.",
+        "We begin by understanding your space, lifestyle, and preferences to shape a clear design direction.",
       image: "/zoom.jpg",
     },
     content: [
-      "Our design & planning service focuses on transforming spaces into elegant and practical environments.",
-      "We analyze your needs, vision, and lifestyle to create personalized spaces.",
-      "Every project is handled with detailed attention to structure, style, and sustainability.",
-      "From concept to execution, we deliver end-to-end design solutions.",
+      "Detailed discussions to understand your needs and expectations.",
+      "Mood boards and concept ideation for visual clarity.",
+      "Budget and feasibility analysis before execution.",
+      "A strong foundation that guides the entire project smoothly.",
     ],
     slides: [
       {
         leftBox: {
           image: "/zoom2.png",
-          title: "Space Planning",
-          description:
-            "Efficient layouts that optimize every inch of your home.",
+          title: "Concept Development",
+          description: "Initial ideas translated into clear design concepts.",
         },
         rightBoxes: [
           {
             image: "/service.jpg",
-            title: "Interior Visualization",
-            description:
-              "See your project come to life before construction begins.",
+            title: "Mood Boards",
+            description: "Color palettes and material inspiration.",
           },
           {
             image: "/zoom3.jpg",
-            title: "Concept Modeling",
-            description:
-              "Creative 3D models for accurate visual understanding.",
-          },
-        ],
-      },
-      {
-        leftBox: {
-          image: "/zoom4.png",
-          title: "Architectural Detailing",
-          description:
-            "Precision detailing that ensures quality and durability.",
-        },
-        rightBoxes: [
-          {
-            image: "/service2.jpg",
-            title: "Lighting Concepts",
-            description:
-              "Lighting strategies that enhance design and ambiance.",
-          },
-          {
-            image: "/zoom.jpg",
-            title: "Sustainable Design",
-            description: "Eco-friendly concepts for energy-efficient spaces.",
+            title: "Design Direction",
+            description: "Clear roadmap before moving to execution.",
           },
         ],
       },
     ],
   },
-  "interior-design": {
+
+  "residential-interiors": {
     banner: {
-      title: "Interior Design",
-      subtitle: "Our specialization",
+      title: "Residential Interiors",
+      subtitle: "Our Service",
       description:
-        "We craft thoughtful, innovative architectural designs that blend form and function beautifully.",
+        "Personalized home interiors designed for comfort, beauty, and functionality.",
       image: "/zoom.jpg",
     },
     content: [
-      "Our Interior Design service focuses on transforming spaces into elegant and practical environments.",
-      "We analyze your needs, vision, and lifestyle to create personalized spaces.",
-      "Every project is handled with detailed attention to structure, style, and sustainability.",
-      "From concept to execution, we deliver end-to-end design solutions.",
+      "Tailored interior solutions for apartments and villas.",
+      "Designs that reflect your lifestyle and personality.",
+      "Careful selection of colors, materials, and finishes.",
+      "Functional layouts blended with timeless aesthetics.",
     ],
     slides: [
       {
         leftBox: {
           image: "/zoom2.png",
-          title: "Space Planning",
-          description:
-            "Efficient layouts that optimize every inch of your home.",
+          title: "Living Spaces",
+          description: "Warm and welcoming living room designs.",
         },
         rightBoxes: [
           {
             image: "/service.jpg",
-            title: "Interior Visualization",
-            description:
-              "See your project come to life before construction begins.",
+            title: "Bedrooms",
+            description: "Comfort-focused, relaxing bedroom interiors.",
           },
           {
             image: "/zoom3.jpg",
-            title: "Concept Modeling",
-            description:
-              "Creative 3D models for accurate visual understanding.",
+            title: "Kitchens",
+            description: "Efficient and stylish kitchen solutions.",
           },
         ],
       },
+    ],
+  },
+
+  "commercial-interiors": {
+    banner: {
+      title: "Commercial Interiors",
+      subtitle: "Our Service",
+      description:
+        "Functional and inspiring commercial spaces that elevate your brand.",
+      image: "/zoom.jpg",
+    },
+    content: [
+      "Office, retail, restaurant, and showroom interiors.",
+      "Designs focused on productivity and customer experience.",
+      "Brand-aligned spatial planning and aesthetics.",
+      "Efficient layouts that support business operations.",
+    ],
+    slides: [
       {
         leftBox: {
-          image: "/zoom4.png",
-          title: "Architectural Detailing",
-          description:
-            "Precision detailing that ensures quality and durability.",
+          image: "/zoom2.png",
+          title: "Office Design",
+          description: "Workspaces that enhance focus and collaboration.",
         },
         rightBoxes: [
           {
-            image: "/service2.jpg",
-            title: "Lighting Concepts",
-            description:
-              "Lighting strategies that enhance design and ambiance.",
+            image: "/service.jpg",
+            title: "Retail Spaces",
+            description: "Customer-centric retail interiors.",
           },
           {
-            image: "/zoom.jpg",
-            title: "Sustainable Design",
-            description: "Eco-friendly concepts for energy-efficient spaces.",
+            image: "/zoom3.jpg",
+            title: "Hospitality",
+            description: "Inviting restaurant and café designs.",
+          },
+        ],
+      },
+    ],
+  },
+
+  "turnkey-solutions": {
+    banner: {
+      title: "Turnkey Solutions",
+      subtitle: "Our Service",
+      description:
+        "Complete interior solutions from concept to final handover.",
+      image: "/zoom.jpg",
+    },
+    content: [
+      "Single-point responsibility for the entire project.",
+      "Material sourcing, vendors, and execution management.",
+      "Strict quality control and timeline adherence.",
+      "A stress-free, ready-to-move-in experience.",
+    ],
+    slides: [
+      {
+        leftBox: {
+          image: "/zoom2.png",
+          title: "Execution",
+          description: "Seamless coordination and site supervision.",
+        },
+        rightBoxes: [
+          {
+            image: "/service.jpg",
+            title: "Material Management",
+            description: "Quality materials sourced responsibly.",
+          },
+          {
+            image: "/zoom3.jpg",
+            title: "Final Handover",
+            description: "Delivered on time, as promised.",
+          },
+        ],
+      },
+    ],
+  },
+
+  "space-planning-3d-visualization": {
+    banner: {
+      title: "Space Planning & 3D Visualization",
+      subtitle: "Our Service",
+      description:
+        "Visualize your space clearly before execution begins.",
+      image: "/zoom.jpg",
+    },
+    content: [
+      "Optimized 2D layouts for efficient space usage.",
+      "Realistic 3D renders for design clarity.",
+      "Better decision-making for materials and layouts.",
+      "Reduced errors during execution phase.",
+    ],
+    slides: [
+      {
+        leftBox: {
+          image: "/zoom2.png",
+          title: "2D Planning",
+          description: "Functional and efficient layouts.",
+        },
+        rightBoxes: [
+          {
+            image: "/service.jpg",
+            title: "3D Renders",
+            description: "Photorealistic design previews.",
+          },
+          {
+            image: "/zoom3.jpg",
+            title: "Walkthroughs",
+            description: "Experience the space virtually.",
+          },
+        ],
+      },
+    ],
+  },
+
+  "custom-furniture-decor": {
+    banner: {
+      title: "Custom Furniture & Décor",
+      subtitle: "Our Service",
+      description:
+        "Furniture and décor designed specifically for your space.",
+      image: "/zoom.jpg",
+    },
+    content: [
+      "Custom-designed furniture tailored to your needs.",
+      "Curated décor elements for visual harmony.",
+      "Premium materials for durability and comfort.",
+      "Unique interiors with a personalized touch.",
+    ],
+    slides: [
+      {
+        leftBox: {
+          image: "/zoom2.png",
+          title: "Custom Furniture",
+          description: "Designed exclusively for your space.",
+        },
+        rightBoxes: [
+          {
+            image: "/service.jpg",
+            title: "Lighting",
+            description: "Decorative and functional lighting.",
+          },
+          {
+            image: "/zoom3.jpg",
+            title: "Décor Styling",
+            description: "Finishing touches that elevate design.",
+          },
+        ],
+      },
+    ],
+  },
+
+  "renovation-remodeling": {
+    banner: {
+      title: "Renovation & Remodeling",
+      subtitle: "Our Service",
+      description:
+        "Transforming existing spaces into modern interiors.",
+      image: "/zoom.jpg",
+    },
+    content: [
+      "Complete and partial renovation solutions.",
+      "Modern upgrades for functionality and aesthetics.",
+      "Minimal disruption during renovation work.",
+      "Enhanced comfort and property value.",
+    ],
+    slides: [
+      {
+        leftBox: {
+          image: "/zoom2.png",
+          title: "Makeovers",
+          description: "Fresh, modern transformations.",
+        },
+        rightBoxes: [
+          {
+            image: "/service.jpg",
+            title: "Upgrades",
+            description: "Smart and stylish improvements.",
+          },
+          {
+            image: "/zoom3.jpg",
+            title: "Restyling",
+            description: "Reviving outdated interiors.",
+          },
+        ],
+      },
+    ],
+  },
+
+  "sustainable-smart-design": {
+    banner: {
+      title: "Sustainable & Smart Design",
+      subtitle: "Our Service",
+      description:
+        "Eco-friendly, energy-efficient, and future-ready interiors.",
+      image: "/zoom.jpg",
+    },
+    content: [
+      "Sustainable materials and responsible design choices.",
+      "Energy-efficient lighting and systems.",
+      "Smart home technology integration.",
+      "Interiors designed for the future.",
+    ],
+    slides: [
+      {
+        leftBox: {
+          image: "/zoom2.png",
+          title: "Eco Materials",
+          description: "Responsible and sustainable choices.",
+        },
+        rightBoxes: [
+          {
+            image: "/service.jpg",
+            title: "Smart Lighting",
+            description: "Energy-saving lighting solutions.",
+          },
+          {
+            image: "/zoom3.jpg",
+            title: "Home Automation",
+            description: "Convenience through smart technology.",
+          },
+        ],
+      },
+    ],
+  },
+
+  "project-management-execution": {
+    banner: {
+      title: "Project Management & Execution",
+      subtitle: "Our Service",
+      description:
+        "Flawless execution with strong project management.",
+      image: "/zoom.jpg",
+    },
+    content: [
+      "End-to-end project planning and coordination.",
+      "Vendor management and site supervision.",
+      "Strict quality checks and timeline control.",
+      "Smooth, hassle-free project delivery.",
+    ],
+    slides: [
+      {
+        leftBox: {
+          image: "/zoom2.png",
+          title: "Site Supervision",
+          description: "On-site quality and progress control.",
+        },
+        rightBoxes: [
+          {
+            image: "/service.jpg",
+            title: "Vendor Coordination",
+            description: "Smooth collaboration across teams.",
+          },
+          {
+            image: "/zoom3.jpg",
+            title: "Timely Delivery",
+            description: "Projects completed as scheduled.",
           },
         ],
       },
     ],
   },
 };
+
 
 const slidesData = [
   {

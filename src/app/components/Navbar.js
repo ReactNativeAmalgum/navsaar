@@ -19,8 +19,15 @@ export default function Navbar() {
 
   // Services list
   const serviceItems = {
-    "Design & Planning": "design-planning",
-    "Interior Design": "interior-design",
+    "Design Consultation": "design-consultation",
+    "Residential Interiors": "residential-interiors",
+    "Commercial Interiors": "commercial-interiors",
+    "Turnkey Solutions": "turnkey-solutions",
+    "Space Planning & 3D Visualization": "space-planning-3d-visualization",
+    "Custom Furniture & Décor": "custom-furniture-decor",
+    "Renovation & Remodeling": "renovation-remodeling",
+    "Sustainable & Smart Design": "sustainable-smart-design",
+    "Project Management & Execution": "project-management-execution",
   };
 
   const navItems = [

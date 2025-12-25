@@ -8,7 +8,7 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import styles from "../../styles/components/Testimonial.module.css";
+import styles from "@/styles/components/Testimonial.module.css";
 
 const testimonials = [
   {

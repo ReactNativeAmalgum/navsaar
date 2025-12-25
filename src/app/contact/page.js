@@ -8,7 +8,7 @@ export default function Contact() {
     <section className={styles.contact}>
       <div className={styles.mapContainer}>
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.2573617325654!2d-73.98565158461022!3d40.74844007932822!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259654d008d7b%3A0x7d6f55416b9b39d!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1678822601934!5m2!1sen!2sus"
+          src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d235.58834151806167!2d72.91962387191766!3d19.13337043722305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1766639639042!5m2!1sen!2sin"
           aria-hidden="false"
           tabIndex="0"
           className={styles.mapIframe}
@@ -22,14 +22,15 @@ export default function Contact() {
         <div className={styles.info}>
           <h4>INFORMATION</h4>
           <h2>
-            <span className={styles.city}>New York,</span>{" "}
-            <span className={styles.country}>United States</span>
+            <span className={styles.city}>Powai,</span>{" "}
+            <span className={styles.country}>Mumbai</span>
           </h2>
           <p>
-            No. 166 Main Street, Beverly Hills <br /> CA, 90210
+            No. 971 Navsaar Studio, IIT Market, Powai
+            <br /> Mumbai - 76
           </p>
           <p>
-            +0085 346 2188 <br /> infor@arquito.com
+            (+91) 9967314412 <br /> navsar@gamil.com
           </p>
           <a href="#" className={styles.mapLink}>
             Map Direction
@@ -38,7 +39,7 @@ export default function Contact() {
 
         <div className={styles.info}>
           <h4>GET IN TOUCH</h4>
-          <form className={styles.form} >
+          <form className={styles.form}>
             <div className={styles.formRow}>
               <input
                 className={`${styles.input}`}
@@ -55,8 +56,7 @@ export default function Contact() {
               maxLength={500}
               className={`${styles.textarea} `}
               placeholder="Here goes your message"
-            >
-              </textarea>
+            ></textarea>
             <button type="submit" className={styles.sendBtn}>
               SEND MESSAGE
             </button>

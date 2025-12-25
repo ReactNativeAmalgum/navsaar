@@ -1,6 +1,7 @@
 // components/Footer.tsx
 "use client";
 
+import Link from "next/link";
 import { FaFacebookF, FaGooglePlusG, FaLinkedinIn } from "react-icons/fa";
 import { SiBehance } from "react-icons/si";
 import styles from "@/styles/components/Footer.module.css";
@@ -13,10 +14,10 @@ export default function Footer() {
         <div className={styles.column}>
           <h5>Company</h5>
           <ul>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Career</a></li>
-            <li><a href="#">Services</a></li>
+            <li><Link href="/about">About</Link></li>
+            <li><Link href="/contact">Contact</Link></li>
+            <li><Link href="/projects">Projects</Link></li>
+            <li><Link href="/service/design-consultation">Services</Link></li>
           </ul>
         </div>
 
@@ -24,37 +25,35 @@ export default function Footer() {
         <div className={styles.column}>
           <h5>Help Center</h5>
           <ul>
-            <li><a href="#">FAQs</a></li>
-            <li><a href="#">Terms & Conditions</a></li>
-            <li><a href="#">Privacy</a></li>
-            <li><a href="#">How It Works</a></li>
-            <li><a href="#">Return</a></li>
+            {/* <li><Link href="/faqs">FAQs</Link></li> */}
+            <li><Link href="/terms-conditions">Terms & Conditions</Link></li>
+            <li><Link href="/privacy-policy">Privacy</Link></li>
+            {/* <li><Link href="/how-it-works">How It Works</Link></li> */}
+            {/* <li><Link href="/returns">Return</Link></li> */}
           </ul>
         </div>
 
         {/* Get In Touch */}
         <div className={styles.column}>
           <h5>Get In Touch</h5>
-          <p>17 Princess Road, London, Greater London</p>
-          <p>NW18JR, United Kingdom</p>
-          <p>hello@arquito.uk</p>
-          <p>(+0084) 912-3548-073</p>
+          <p>No. 971 Navsaar Studio</p>
+          <p>IIT Market, Powai, Mumbai - 76</p>
+          <p>navsar@gamil.com</p>
+          <p>(+91) 9967314412</p>
         </div>
 
         {/* Newsletter */}
         <div className={styles.column}>
-          <h5>Newsletter</h5>
-          <form className={styles.newsletter}>
-            <input type="email" placeholder="Enter your email..." />
-            <button type="submit">SUBSCRIBE ➝</button>
-          </form>
+         <div className={styles.logo}>
+           <h2>Logo</h2>
+         </div>
         </div>
       </div>
 
       {/* Bottom bar */}
       <div className={styles.bottomBar}>
         <p>
-          © 2025 <span className={styles.bold}>NAVSAAR</span>. All Rights Reserved. 
+          © 2025 <span className={styles.bold}>NAVSAAR</span>. All Rights Reserved.
           Design by <span className={styles.bold}>Mukund Sharma</span>
         </p>
         <div className={styles.socials}>
