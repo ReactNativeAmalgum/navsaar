@@ -266,18 +266,18 @@ export const servicesData2 = {
     slides: [
       {
         leftBox: {
-          image: "/zoom2.png",
+          image: "/Living_Space.jpg",
           title: "Living Spaces",
           description: "Warm and welcoming living room designs.",
         },
         rightBoxes: [
           {
-            image: "/service.jpg",
+            image: "/Bedroom.jpg",
             title: "Bedrooms",
             description: "Comfort-focused, relaxing bedroom interiors.",
           },
           {
-            image: "/zoom3.jpg",
+            image: "/Kitchen.jpg",
             title: "Kitchens",
             description: "Efficient and stylish kitchen solutions.",
           },
@@ -307,18 +307,18 @@ export const servicesData2 = {
     slides: [
       {
         leftBox: {
-          image: "/zoom2.png",
+          image: "/Office_Design.jpg",
           title: "Office Design",
           description: "Workspaces that enhance focus and collaboration.",
         },
         rightBoxes: [
           {
-            image: "/service.jpg",
+            image: "/Retail_Shop.jpeg",
             title: "Retail Spaces",
             description: "Customer-centric retail interiors.",
           },
           {
-            image: "/zoom3.jpg",
+            image: "/Hospitality.jpeg",
             title: "Hospitality",
             description: "Inviting restaurant and café designs.",
           },
@@ -348,18 +348,18 @@ export const servicesData2 = {
     slides: [
       {
         leftBox: {
-          image: "/zoom2.png",
+          image: "/Execution.jpg",
           title: "Execution",
           description: "Seamless coordination and site supervision.",
         },
         rightBoxes: [
           {
-            image: "/service.jpg",
+            image: "/Management.jpeg",
             title: "Material Management",
             description: "Quality materials sourced responsibly.",
           },
           {
-            image: "/zoom3.jpg",
+            image: "/Handover.jpeg",
             title: "Final Handover",
             description: "Delivered on time, as promised.",
           },
@@ -389,18 +389,18 @@ export const servicesData2 = {
     slides: [
       {
         leftBox: {
-          image: "/zoom2.png",
+          image: "/2D.jpg",
           title: "2D Planning",
           description: "Functional and efficient layouts.",
         },
         rightBoxes: [
           {
-            image: "/service.jpg",
+            image: "/3D.jpg",
             title: "3D Renders",
             description: "Photorealistic design previews.",
           },
           {
-            image: "/zoom3.jpg",
+            image: "/Walkthrough.jpg",
             title: "Walkthroughs",
             description: "Experience the space virtually.",
           },
@@ -430,18 +430,18 @@ export const servicesData2 = {
     slides: [
       {
         leftBox: {
-          image: "/zoom2.png",
+          image: "/Decor1.jpg",
           title: "Custom Furniture",
           description: "Designed exclusively for your space.",
         },
         rightBoxes: [
           {
-            image: "/service.jpg",
+            image: "/Lighting.jpg",
             title: "Lighting",
             description: "Decorative and functional lighting.",
           },
           {
-            image: "/zoom3.jpg",
+            image: "/Decor.jpg",
             title: "Décor Styling",
             description: "Finishing touches that elevate design.",
           },
@@ -471,18 +471,18 @@ export const servicesData2 = {
     slides: [
       {
         leftBox: {
-          image: "/zoom2.png",
+          image: "/Makeovers.jpg",
           title: "Makeovers",
           description: "Fresh, modern transformations.",
         },
         rightBoxes: [
           {
-            image: "/service.jpg",
+            image: "/Upgrade.jpg",
             title: "Upgrades",
             description: "Smart and stylish improvements.",
           },
           {
-            image: "/zoom3.jpg",
+            image: "/Restyling2.jpg",
             title: "Restyling",
             description: "Reviving outdated interiors.",
           },
@@ -512,18 +512,18 @@ export const servicesData2 = {
     slides: [
       {
         leftBox: {
-          image: "/zoom2.png",
+          image: "/Eco_Materials.jpg",
           title: "Eco Materials",
           description: "Responsible and sustainable choices.",
         },
         rightBoxes: [
           {
-            image: "/service.jpg",
+            image: "/Smart_Lighting.jpeg",
             title: "Smart Lighting",
             description: "Energy-saving lighting solutions.",
           },
           {
-            image: "/zoom3.jpg",
+            image: "/Home_Automatino.jpeg",
             title: "Home Automation",
             description: "Convenience through smart technology.",
           },
@@ -553,18 +553,18 @@ export const servicesData2 = {
     slides: [
       {
         leftBox: {
-          image: "/zoom2.png",
+          image: "/Site_Suppervision.webp ",
           title: "Site Supervision",
           description: "On-site quality and progress control.",
         },
         rightBoxes: [
           {
-            image: "/service.jpg",
+            image: "/Project Management.jpeg",
             title: "Vendor Coordination",
             description: "Smooth collaboration across teams.",
           },
           {
-            image: "/zoom3.jpg",
+            image: "/Timely_Delivery.jpeg",
             title: "Timely Delivery",
             description: "Projects completed as scheduled.",
           },
