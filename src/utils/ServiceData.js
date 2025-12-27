@@ -553,7 +553,7 @@ export const servicesData2 = {
     slides: [
       {
         leftBox: {
-          image: "/Site_Suppervision.webp ",
+          image: "/Site_Suppervision.webp",
           title: "Site Supervision",
           description: "On-site quality and progress control.",
         },
@@ -574,3 +574,95 @@ export const servicesData2 = {
   },
 };
 
+
+
+export const slidesData = [
+  {
+    link: "/service/design-consultation",
+    leftBox: {
+      image: "/Mood_Boards.jpg",
+      title: "Design Consultation",
+      description:
+        "Understanding your space, lifestyle, and vision before starting the design journey.",
+    },
+  },
+
+  {
+    link: "/service/residential-interiors",
+    leftBox: {
+      image: "/Living_Space.jpg",
+      title: "Residential Interiors",
+      description:
+        "Personalized home interiors blending comfort, beauty, and functionality.",
+    },
+  },
+
+  {
+    link: "/service/commercial-interiors",
+    leftBox: {
+      image: "/Office_Design.jpg",
+      title: "Commercial Interiors",
+      description:
+        "Functional and brand-focused interiors for commercial success.",
+    },
+  },
+
+  {
+    link: "/service/turnkey-solutions",
+    leftBox: {
+      image: "/Management.jpeg",
+      title: "Turnkey Solutions",
+      description:
+        "End-to-end interior solutions from design to final handover.",
+    },
+  },
+
+  {
+    link: "/service/space-planning-3d-visualization",
+    leftBox: {
+      image: "/2D.jpg",
+      title: "Space Planning & 3D Visualization",
+      description:
+        "See your space clearly with optimized layouts and realistic visuals.",
+    },
+  },
+
+  {
+    link: "/service/custom-furniture-decor",
+    leftBox: {
+      image: "/Decor.jpg",
+      title: "Custom Furniture & Décor",
+      description: "Furniture and décor crafted specifically for your space.",
+    },
+  },
+
+  {
+    link: "/service/renovation-remodeling",
+    leftBox: {
+      image: "/Makeovers.jpg",
+      title: "Renovation & Remodeling",
+      description:
+        "Upgrading existing spaces into modern, functional interiors.",
+    },
+  },
+
+  {
+    link: "/service/sustainable-smart-design",
+    leftBox: {
+      image: "/Home_Automatino.jpeg",
+      title: "Sustainable & Smart Design",
+      description: "Eco-friendly interiors with smart technology integration.",
+    },
+  },
+
+  {
+    link: "/service/project-management-execution",
+    leftBox: {
+      image: "/Timely_Delivery.jpeg",
+      title: "Project Management & Execution",
+      description:
+        "Strong planning and flawless execution from start to finish.",
+    },
+   
+  },
+];

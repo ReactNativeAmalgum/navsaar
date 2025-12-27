@@ -11,7 +11,7 @@ import "swiper/css/pagination";
 // import required modules
 import { Autoplay, FreeMode } from "swiper/modules";
 import { Bounce, Slide } from "react-awesome-reveal";
-import { ServiceData } from "../../utils/ServiceData";
+import { ServiceData, slidesData } from "../../utils/ServiceData";
 import Image from "next/image";
 import CountUp from "react-countup";
 
@@ -60,103 +60,34 @@ function OurServices2() {
               <Swiper
                 slidesPerView={1}
                 spaceBetween={30}
-                freeMode={false}
-                // modules={[FreeMode, Autoplay]}
-                className={styles.mySwiper}
                 speed={1000}
                 autoplay={{
-                  delay: 1000,
-                  disableOnInteraction: true,
+                  delay: 2000,
+                  disableOnInteraction: false,
                 }}
                 breakpoints={{
-                  200: { slidesPerView: 1 },
                   320: { slidesPerView: 1 },
-                  425: { slidesPerView: 1 },
                   768: { slidesPerView: 2 },
                   1024: { slidesPerView: 3 },
                 }}
+                className={styles.mySwiper}
               >
-                <SwiperSlide className={styles.sliderImgCont}>
-                  <div className={styles.imageWrapper}>
-                    <Image
-                      src={ServiceData[0].img[0]}
-                      alt="Interior Designer in Thane"
-                      fill
-                      style={{ objectFit: "cover", borderRadius: "20px" }}
-                    />
-                    <a
-                      className={styles.imageCaption}
-                      href="/designplanning/interior-design-planning-services-thane"
-                    >
-                      <Bounce>Design Planning</Bounce>
-                    </a>
-                  </div>
-                </SwiperSlide>
+                {slidesData.map((service, index) => (
+                  <SwiperSlide key={index} className={styles.sliderImgCont}>
+                    <div className={styles.imageWrapper}>
+                      <Image
+                        src={service.leftBox.image}
+                        alt={service.leftBox.title}
+                        fill
+                        style={{ objectFit: "cover", borderRadius: "20px" }}
+                      />
 
-                <SwiperSlide className={styles.sliderImgCont}>
-                  <div className={styles.imageWrapper}>
-                    <Image
-                      src={ServiceData[1].img[0]}
-                      alt="Interior Designer in Thane"
-                      fill
-                      style={{ objectFit: "cover", borderRadius: "20px" }}
-                    />
-                    <a
-                      className={styles.imageCaption}
-                      href="/designplanning/interior-design-planning-services-thane"
-                    >
-                      <Bounce>Design Planning</Bounce>
-                    </a>
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide className={styles.sliderImgCont}>
-                  <div className={styles.imageWrapper}>
-                    <Image
-                      src={ServiceData[2].img[0]}
-                      alt="Interior Designer in Thane"
-                      fill
-                      style={{ objectFit: "cover", borderRadius: "20px" }}
-                    />
-                    <a
-                      className={styles.imageCaption}
-                      href="/designplanning/interior-design-planning-services-thane"
-                    >
-                      <Bounce>Design Planning</Bounce>
-                    </a>
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide className={styles.sliderImgCont}>
-                  <div className={styles.imageWrapper}>
-                    <Image
-                      src={ServiceData[3].img[0]}
-                      alt="Interior Designer in Thane"
-                      fill
-                      style={{ objectFit: "cover", borderRadius: "20px" }}
-                    />
-                    <a
-                      className={styles.imageCaption}
-                      href="/designplanning/interior-design-planning-services-thane"
-                    >
-                      <Bounce>Design Planning</Bounce>
-                    </a>
-                  </div>
-                </SwiperSlide>
-                <SwiperSlide className={styles.sliderImgCont}>
-                  <div className={styles.imageWrapper}>
-                    <Image
-                      src={ServiceData[4].img[0]}
-                      alt="Interior Designer in Thane"
-                      fill
-                      style={{ objectFit: "cover", borderRadius: "20px" }}
-                    />
-                    <a
-                      className={styles.imageCaption}
-                      href="/designplanning/interior-design-planning-services-thane"
-                    >
-                      <Bounce>Design Planning</Bounce>
-                    </a>
-                  </div>
-                </SwiperSlide>
+                      <a href={service.link} className={styles.imageCaption}>
+                        <Bounce>{service.leftBox.title}</Bounce>
+                      </a>
+                    </div>
+                  </SwiperSlide>
+                ))}
               </Swiper>
             </div>
             {/* Stats Divider */}

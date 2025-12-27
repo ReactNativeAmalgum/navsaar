@@ -9,55 +9,17 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Pagination, Navigation } from "swiper/modules";
-import { servicesData2 } from "@/utils/ServiceData";
+import { servicesData2, slidesData } from "@/utils/ServiceData";
+import { useRouter } from "next/navigation";
 
-const slidesData = [
-  {
-    leftBox: {
-      image: "/zoom.jpg",
-      title: "Box Title 1",
-      description: "This box is centered vertically in the column.",
-    },
-    rightBoxes: [
-      {
-        image: "/zoom2.png",
-        title: "Inner Box 1",
-        description: "First inner box stacked vertically.",
-      },
-      {
-        image: "/service.jpg",
-        title: "Inner Box 2",
-        description: "Second inner box stacked below the first one.",
-      },
-    ],
-  },
-  {
-    leftBox: {
-      image: "/zoom3.jpg",
-      title: "Box Title 2",
-      description: "Updated left box content for next slide.",
-    },
-    rightBoxes: [
-      {
-        image: "/zoom4.png",
-        title: "Inner Box 3",
-        description: "Updated first right box content.",
-      },
-      {
-        image: "/service2.jpg",
-        title: "Inner Box 4",
-        description: "Updated second right box content.",
-      },
-    ],
-  },
-  // Add more slides if needed
-];
+
 
 export default function ServiceDetailPage() {
   const { slug } = useParams();
   const service = servicesData2[slug];
   const [blur, setBlur] = useState(0);
   const swiperRef = useRef(null);
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -223,7 +185,10 @@ export default function ServiceDetailPage() {
                         <h4 className="fw-bold">{item.leftBox.title}</h4>
                         <p className="small">{item.leftBox.description}</p>
                       </div>
-                      <button className="btn btn-outline-light align-self-start rounded-circle w-40 h-40">
+                      <button
+                        onClick={() => router.push(item.link)}
+                        className="btn btn-outline-light align-self-start rounded-circle w-40 h-40"
+                      >
                         <span className="fs-5">&#10132;</span>
                       </button>
                     </div>

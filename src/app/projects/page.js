@@ -55,6 +55,21 @@ const galleryItems = {
   ],
 };
 
+const videoItems = [
+  {
+    src: "/videos/Progress.webm",
+    title: "Living Room Walkthrough",
+  },
+  {
+    src: "/videos/Shah_MasterBedroom.webm",
+    title: "Shah Master Bedroom Tour",
+  },
+  {
+    src: "/videos/reel.webm",
+    title: "Vikram Bedroom Tour",
+  },
+];
+
 const buttons = ["Living Room", "Bedroom", "Dining Room", "Kitchen"];
 function NoClickJumpCompare({ leftImage, rightImage, alt }) {
   const startX = useRef(null);
@@ -155,11 +170,17 @@ export default function Page() {
 
   const handleMainCategoryClick = (category) => {
     setActiveBtn(category);
-    setActiveSubLink(""); // Reset sub-link on main category change
-    const items = galleryItems[category] || [];
 
+    if (category === "Videos") {
+      setLinks([]);
+      setCarouselItems([]);
+      setActiveIndex(0);
+      return;
+    }
+
+    const items = galleryItems[category] || [];
     setCarouselItems(items);
-    setActiveIndex(0); // Reset carousel index
+    setActiveIndex(0);
 
     const subLinks = items.map((item) => item.title);
     setLinks(subLinks);
@@ -317,10 +338,12 @@ export default function Page() {
                     </li>
                   ))}
                   <button
-                    className={`custom-btn`}
-                    onClick={() => handleMainCategoryClick("Explore More")}
+                    className={`custom-btn ${
+                      activeBtn === "Videos" ? "active" : ""
+                    }`}
+                    onClick={() => setActiveBtn("Videos")}
                   >
-                    Explore More
+                    Videos
                   </button>
                 </ul>
               )}
@@ -347,29 +370,53 @@ export default function Page() {
           </div>
 
           {/* Carousel */}
-          <Carousel
-            activeIndex={activeIndex}
-            onSelect={handleSelect}
-            slide={false}
-            variant="dark"
-            className="before-after-carousel mt-5"
-            controls={false} // hide default controls
-            indicators={false} // hide indicators if you want
-          >
-            {carouselItems.map((item, idx) => (
-              <Carousel.Item key={idx}>
-                <div className="d-flex justify-content-center">
-                  <div className="card before-after-card border-0 p-3">
-                    <NoClickJumpCompare
-                      leftImage={item.beforeSrc}
-                      rightImage={item.afterSrc}
-                      alt={`${item.title} Comparison`}
+          {/* CONTENT SECTION */}
+          {activeBtn === "Videos" ? (
+            <div className={`row mt-5`}>
+              {videoItems.map((video, idx) => (
+                <div key={idx} className="col-md-4 mb-4">
+                  <div className="card border-0 video-wrapper">
+                    <video
+                      src={video.src}
+                      controls
+                      loop
+                      playsInline
+                      style={{
+                        width: "100%",
+                        height:'100%',
+                        borderRadius: "16px",
+                      }}
                     />
+                    <p className="text-center mt-2 fw-medium">{video.title}</p>
                   </div>
                 </div>
-              </Carousel.Item>
-            ))}
-          </Carousel>
+              ))}
+            </div>
+          ) : (
+            <Carousel
+              activeIndex={activeIndex}
+              onSelect={handleSelect}
+              slide={false}
+              variant="dark"
+              className="before-after-carousel mt-5"
+              controls={false}
+              indicators={false}
+            >
+              {carouselItems.map((item, idx) => (
+                <Carousel.Item key={idx}>
+                  <div className="d-flex justify-content-center">
+                    <div className="card before-after-card border-0 p-3">
+                      <NoClickJumpCompare
+                        leftImage={item.beforeSrc}
+                        rightImage={item.afterSrc}
+                        alt={`${item.title} Comparison`}
+                      />
+                    </div>
+                  </div>
+                </Carousel.Item>
+              ))}
+            </Carousel>
+          )}
         </div>
       </section>
       <style jsx>{`
@@ -431,6 +478,34 @@ export default function Page() {
         /* ^ caret (upward) */
         .caret.up {
           transform: rotate(-135deg);
+        }
+        .video-wrapper {
+          position: relative;
+          width: 100%;
+          aspect-ratio: 16 / 9; /* default desktop */
+          border-radius: 16px;
+          overflow: hidden;
+          background: #000;
+        }
+
+        .responsive-video {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        /* Tablet */
+        @media (max-width: 1024px) {
+          .video-wrapper {
+            aspect-ratio: 4 / 3;
+          }
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+          .video-wrapper {
+            aspect-ratio: 1 / 1; /* square looks better on mobile */
+          }
         }
       `}</style>
     </>

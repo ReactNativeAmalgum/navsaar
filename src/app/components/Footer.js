@@ -5,6 +5,7 @@ import Link from "next/link";
 import { FaFacebookF, FaGooglePlusG, FaLinkedinIn } from "react-icons/fa";
 import { SiBehance } from "react-icons/si";
 import styles from "@/styles/components/Footer.module.css";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -14,10 +15,18 @@ export default function Footer() {
         <div className={styles.column}>
           <h5>Company</h5>
           <ul>
-            <li><Link href="/about">About</Link></li>
-            <li><Link href="/contact">Contact</Link></li>
-            <li><Link href="/projects">Projects</Link></li>
-            <li><Link href="/service/design-consultation">Services</Link></li>
+            <li>
+              <Link href="/about">About</Link>
+            </li>
+            <li>
+              <Link href="/contact">Contact</Link>
+            </li>
+            <li>
+              <Link href="/projects">Projects</Link>
+            </li>
+            <li>
+              <Link href="/service/design-consultation">Services</Link>
+            </li>
           </ul>
         </div>
 
@@ -26,8 +35,12 @@ export default function Footer() {
           <h5>Help Center</h5>
           <ul>
             {/* <li><Link href="/faqs">FAQs</Link></li> */}
-            <li><Link href="/terms-conditions">Terms & Conditions</Link></li>
-            <li><Link href="/privacy-policy">Privacy</Link></li>
+            <li>
+              <Link href="/terms-conditions">Terms & Conditions</Link>
+            </li>
+            <li>
+              <Link href="/privacy-policy">Privacy</Link>
+            </li>
             {/* <li><Link href="/how-it-works">How It Works</Link></li> */}
             {/* <li><Link href="/returns">Return</Link></li> */}
           </ul>
@@ -44,23 +57,37 @@ export default function Footer() {
 
         {/* Newsletter */}
         <div className={styles.column}>
-         <div className={styles.logo}>
-           <h2>Logo</h2>
-         </div>
+          <div className={styles.logo}>
+            <Image
+              src="/Navsaar Studios.png"
+              alt="Navsaar Studios Logo"
+              width={150}
+              height={50}
+              objectFit="contain"
+            />
+          </div>
         </div>
       </div>
 
       {/* Bottom bar */}
       <div className={styles.bottomBar}>
         <p>
-          © 2025 <span className={styles.bold}>NAVSAAR</span>. All Rights Reserved.
-          Design by <span className={styles.bold}>Mukund Sharma</span>
+          © 2025 <span className={styles.bold}>NAVSAAR</span>. All Rights
+          Reserved. Design by <span className={styles.bold}>Mukund Sharma</span>
         </p>
         <div className={styles.socials}>
-          <a href="#"><FaFacebookF /></a>
-          <a href="#"><SiBehance /></a>
-          <a href="#"><FaGooglePlusG /></a>
-          <a href="#"><FaLinkedinIn /></a>
+          <a href="#">
+            <FaFacebookF />
+          </a>
+          <a href="#">
+            <SiBehance />
+          </a>
+          <a href="#">
+            <FaGooglePlusG />
+          </a>
+          <a href="#">
+            <FaLinkedinIn />
+          </a>
         </div>
       </div>
     </footer>

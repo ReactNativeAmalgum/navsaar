@@ -8,7 +8,6 @@ import { Pagination } from "swiper/modules";
 import styles from "@/styles/components/Aboutus.module.css";
 import React from "react";
 import { Accordion } from "react-bootstrap";
-import Image from "next/image";
 
 export default function Page() {
   const [activeKey, setActiveKey] = React.useState("0");
@@ -108,7 +107,7 @@ export default function Page() {
           </div>
 
           {/* Right Section */}
-          <div className={`col-md-6 mt-5 mt-md-0 ${styles.rightSection }`}>
+          <div className={`col-md-6 mt-5 mt-md-0 ${styles.rightSection}`}>
             <h5 className="mb-4 achivements ">Our Achievements</h5>
 
             <div className="mb-4">
@@ -133,50 +132,6 @@ export default function Page() {
                 countries.
               </p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-5 bg-light section_padding">
-        <div className="container">
-          <h2 className="label">Our specializations</h2>
-          <div className="mt-5">
-            <Swiper
-              modules={[Pagination]}
-              spaceBetween={30}
-              slidesPerView={1}
-              navigation
-              pagination={{ clickable: true }}
-              breakpoints={{
-                768: { slidesPerView: 2 },
-                992: { slidesPerView: 3 },
-              }}
-            >
-              {specializations.map((item, index) => (
-                <SwiperSlide key={index}>
-                  <div
-                    className="position-relative text-white rounded overflow-hidden"
-                    style={{
-                      backgroundImage: `url(${item.image})`,
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                      minHeight: "400px",
-                    }}
-                  >
-                    <div className="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 p-4 d-flex flex-column justify-content-between">
-                      <div>
-                        <p className="fw-semibold mb-1">{item.id}</p>
-                        <h4 className="fw-bold">{item.title}</h4>
-                        <p className="small">{item.description}</p>
-                      </div>
-                      <button className="btn btn-outline-light align-self-start rounded-circle w-40 h-40">
-                        <span className="fs-5">&#10132;</span>
-                      </button>
-                    </div>
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
           </div>
         </div>
       </section>
@@ -217,135 +172,154 @@ export default function Page() {
           </div>
 
           {/* Right Side: Video */}
-          <div className="col-md-6 ">
-            <div className={styles.videoWrapper}>
-              <div className="video-image">
-                <Image
-                  src="/zoom.jpg"
-                  alt="Video Preview"
-                  width={640}
-                  height={360}
-                  className="img-fluid rounded"
-                />
-              </div>
+          <div className="col-md-6">
+            <div
+              style={{
+                width: "100%",
+                height: "400px",
+                backgroundColor: "#000",
+                borderRadius: "8px",
+                overflow: "hidden",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <video
+                src="/videos/Progress.webm"
+                autoPlay
+                muted
+                loop
+                playsInline
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                }}
+                preload="metadata"
+              >
+                Your browser does not support the video tag.
+              </video>
             </div>
           </div>
         </div>
       </section>
 
       <style jsx global>{`
-  /* ===== General Typography ===== */
-  .history-wrapper {
-    width: 320px;
-  }
+        /* ===== General Typography ===== */
+        .history-wrapper {
+          width: 320px;
+        }
 
-  .history-text,
-  .numYear,
-  .numbers {
-    font-family: "Teko", sans-serif;
-    font-weight: 400;
-    color: rgb(242, 74, 0);
-  }
+        .history-text,
+        .numYear,
+        .numbers {
+          font-family: "Teko", sans-serif;
+          font-weight: 400;
+          color: rgb(242, 74, 0);
+        }
 
-  .history-text {
-    font-size: 24px;
-  }
+        .history-text {
+          font-size: 24px;
+        }
 
-  .numYear {
-    font-size: 250px;
-  }
+        .numYear {
+          font-size: 250px;
+        }
 
-  .numbers {
-    font-size: 100px;
-  }
+        .numbers {
+          font-size: 100px;
+        }
 
-  .experince-text,
-  .achivements {
-    font-family: "Roboto", sans-serif;
-    text-transform: uppercase;
-  }
+        .experince-text,
+        .achivements {
+          font-family: "Roboto", sans-serif;
+          text-transform: uppercase;
+        }
 
-  .experince-text {
-    color: rgb(242, 74, 0);
-    font-weight: 600;
-    font-size: 24px;
-    letter-spacing: 0.056px;
-  }
+        .experince-text {
+          color: rgb(242, 74, 0);
+          font-weight: 600;
+          font-size: 24px;
+          letter-spacing: 0.056px;
+        }
 
-  .achivements {
-    font-weight: 500;
-  }
+        .achivements {
+          font-weight: 500;
+        }
 
-  /* ===== Backgrounds ===== */
-  .dotted-bg,
-  .videoWrapper {
-    background-image: radial-gradient(#ddd 1px, transparent 0);
-    background-size: 10px 10px;
-  }
+        /* ===== Backgrounds ===== */
+        .dotted-bg,
+        .videoWrapper {
+          background-image: radial-gradient(#ddd 1px, transparent 0);
+          background-size: 10px 10px;
+        }
 
-  /* ===== Video Wrapper ===== */
-  .videoWrapper {
-    position: relative;
-    width: 100%;
-    max-width: 400px;
-    height: 500px;
-    background-color: #000;
-    overflow: hidden;
-    border-radius: 8px;
-    display: flex, 
-    justify-content: center !important;
-  }
+        /* ===== Video Wrapper (FIXED) ===== */
+        .videoWrapper {
+          position: relative;
+          width: 100%;
+          height: 500px; /* Required height */
+          background-color: #000;
+          overflow: hidden;
+          border-radius: 8px;
 
-  .video-image {
-    position: relative;
-    width: 425px;
-  }
+          display: flex; /* Fixed comma */
+          align-items: center;
+          justify-content: center;
+        }
 
-  /* ===== Play Button ===== */
-  .btn-outline-light.rounded-circle.w-40.h-40 {
-    width: 40px;
-    height: 40px;
-    padding: 0;
-    font-size: 1.25rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+        .video-image {
+          position: relative;
+          width: 425px;
+        }
 
-  /* ===== Accordion Styling ===== */
-  .accordion-button {
-    background-color: transparent !important; /* light pink when closed */
-    color: black !important;
-    box-shadow: none !important;
-  }
+        /* ===== Play Button ===== */
+        .btn-outline-light.rounded-circle.w-40.h-40 {
+          width: 40px;
+          height: 40px;
+          padding: 0;
+          font-size: 1.25rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
 
-  .accordion-button:not(.collapsed) {
-    background-color: transparent !important;
-    color: white !important;
-    box-shadow: none !important;
-  }
+        /* ===== Accordion Styling ===== */
+        .accordion-button {
+          background-color: transparent !important; /* light pink when closed */
+          color: black !important;
+          box-shadow: none !important;
+        }
 
-  .accordion-button:focus {
-    outline: none !important;
-    box-shadow: none !important;
-    background-color: transparent !important;
-  }
+        .accordion-button:not(.collapsed) {
+          background-color: transparent !important;
+          color: white !important;
+          box-shadow: none !important;
+        }
 
-  /* Active Accordion (custom module class) */
-  .${styles.accordionItemActive} .accordion-button:not(.collapsed) {
-    background-color: transparent !important;
-    color: rgb(242, 74, 0) !important;
-    padding-right: 30px;
-    margin: 0;
-    font-size: 18px;
-    font-weight: 600;
-    text-transform: uppercase;
-  }
+        .accordion-button:focus {
+          outline: none !important;
+          box-shadow: none !important;
+          background-color: transparent !important;
+        }
 
-  .${styles.accordionItemActive} .accordion-button:not(.collapsed)::after {
-    filter: invert(1);
-  }
-`}</style>
+        /* Active Accordion (custom module class) */
+        .${styles.accordionItemActive} .accordion-button:not(.collapsed) {
+          background-color: transparent !important;
+          color: rgb(242, 74, 0) !important;
+          padding-right: 30px;
+          margin: 0;
+          font-size: 18px;
+          font-weight: 600;
+          text-transform: uppercase;
+        }
+
+        .${styles.accordionItemActive}
+          .accordion-button:not(.collapsed)::after {
+          filter: invert(1);
+        }
+      `}</style>
     </>
   );
 }
