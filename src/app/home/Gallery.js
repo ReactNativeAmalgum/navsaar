@@ -55,7 +55,7 @@ const galleryItems = {
   ],
 };
 
-const buttons = ["Living Room", "Bedroom", "Dining Room", "Kitchen"];
+const buttons = ["Living Room", "Bedroom", "Dining Room", "Kitchen", "Videos"];
 function NoClickJumpCompare({ leftImage, rightImage, alt }) {
   const startX = useRef(null);
   const startY = useRef(null);

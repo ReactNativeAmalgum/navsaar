@@ -72,7 +72,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`${styles.navbarContainer} fixed-top px-5`}>
+      <nav className={` fixed-top  ${styles.navbarContainer}`}>
         <div className="container-fluid d-flex justify-content-between align-items-center">
           {/* Brand */}
           <Link href="/" className={styles.navbarBrand}>

@@ -292,6 +292,13 @@
   .burger {
     display: flex;
     z-index: 3000 !important;
+    top: 2.1rem
+        /* top: 0px !important; */
+
+  }
+
+  .navbarContainer {
+    padding-left:20px !important;
   }
 
   .desktopNavLinks {

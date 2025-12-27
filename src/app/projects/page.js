@@ -70,7 +70,7 @@ const videoItems = [
   },
 ];
 
-const buttons = ["Living Room", "Bedroom", "Dining Room", "Kitchen"];
+const buttons = ["Living Room", "Bedroom", "Dining Room", "Kitchen", "Videos"];
 function NoClickJumpCompare({ leftImage, rightImage, alt }) {
   const startX = useRef(null);
   const startY = useRef(null);
@@ -209,12 +209,15 @@ export default function Page() {
     <>
       <section className={styles.banner}>
         <div className={styles.overlay}>
-          <p className={styles.hello}>Say Hello!</p>
-          <h1 className={styles.title}>Professional & Friendly</h1>
-          <p className={styles.description}>
-            Always happy, enthusiastic and creative, is something to talk about
-            Arquito’s Team.
-          </p>
+          <div className={styles.content}>
+            <p className={styles.hello}>Our Projects</p>
+            <h1 className={styles.title}>Designs That Come to Life</h1>
+            <p className={styles.description}>
+              Explore our curated projects where thoughtful design, quality
+              execution, and attention to detail come together to create
+              inspiring spaces.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -337,14 +340,14 @@ export default function Page() {
                       </button>
                     </li>
                   ))}
-                  <button
+                  {/* <button
                     className={`custom-btn ${
                       activeBtn === "Videos" ? "active" : ""
                     }`}
                     onClick={() => setActiveBtn("Videos")}
                   >
                     Videos
-                  </button>
+                  </button> */}
                 </ul>
               )}
             </div>
@@ -383,7 +386,7 @@ export default function Page() {
                       playsInline
                       style={{
                         width: "100%",
-                        height:'100%',
+                        height: "100%",
                         borderRadius: "16px",
                       }}
                     />

@@ -78,9 +78,9 @@ export default function TestimonialCarousel() {
       <div className="container position-relative">
         {/* Title */}
         <div className="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4">
-              <h2 className="label">Love from our clients</h2>
+          <h2 className="label">Love from our clients</h2>
           {/* Custom Prev / Next Buttons */}
-          <div className="d-flex">
+          <div className={"d-flex mt-3 mt-md-0"}>
             <button
               ref={prevRef}
               className="btn btn-outline-dark me-2"

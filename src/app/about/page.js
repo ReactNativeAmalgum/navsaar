@@ -11,45 +11,7 @@ import { Accordion } from "react-bootstrap";
 
 export default function Page() {
   const [activeKey, setActiveKey] = React.useState("0");
-
-  const specializations = [
-    {
-      id: "01",
-      title: "Architecture",
-      description:
-        "As architects, we know that each day is new and must be explored. People’s dreams about how they want to live their lives, how they pursue inspiration and education.",
-      image: "/images/architecture.jpg",
-    },
-    {
-      id: "02",
-      title: "Interior Design",
-      description:
-        "These buildings give architecture, art, culture, history, and nature the opportunity to meet. We see this as an invitation to let the architecture vibrate with artistic audacity, life, and joy.",
-      image: "/images/interior.jpg",
-    },
-    {
-      id: "03",
-      title: "Landscape",
-      description:
-        "We design master plans and urban spaces full of life, always resting on the shoulders of the local culture and its social rituals.",
-      image: "/images/landscape.jpg",
-    },
-    {
-      id: "04",
-      title: "Consulting",
-      description:
-        "The planning and transformation of large urban areas has a decisive impact on the entire cycle of how we live, work & interact with each other.",
-      image: "/images/consulting.jpg",
-    },
-    {
-      id: "05",
-      title: "Consulting",
-      description:
-        "The planning and transformation of large urban areas has a decisive impact on the entire cycle of how we live, work & interact with each other.",
-      image: "/images/consulting.jpg",
-    },
-  ];
-
+  
   const steps = [
     {
       title: "Concept",
